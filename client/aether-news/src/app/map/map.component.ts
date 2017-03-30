@@ -3,7 +3,7 @@ import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 
 import { AgmCoreModule } from "angular2-google-maps/core";   //Google Maps
 import { MapsAPILoader } from 'angular2-google-maps/core';
-import { SebmGoogleMap, SebmGooglePolyline, SebmGooglePolylinePoint } from 'angular2-google-maps/core';
+import { SebmGoogleMap } from 'angular2-google-maps/core';
 
 @Component({
   selector: 'app-map',
