@@ -1,0 +1,20 @@
+/*MAP*/
+
+#map {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.map-container {
+  height: 800px;
+
+}
+
+#regions_div {
+  width:100%;
+  height: 700px;
+}
