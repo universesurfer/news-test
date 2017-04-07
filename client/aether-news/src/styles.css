@@ -1,16 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
-/*MAP*/
-
-#map {
-  position: relative;
-  height: 1024px;
-  width: 2048px;
-  top: 0;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.map-container {
-
+/*NAV*/
+.navbar-header .navbar-brand{
+  color: purple;
 }
