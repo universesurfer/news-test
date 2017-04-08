@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "^2.4.0",
     "@angular/router": "^3.4.0",
     "@types/googlemaps": "^3.26.8",
+    "amcharts3-angular2": "github:amcharts/amcharts3-angular2",
     "angular2-google-maps": "^0.17.0",
     "core-js": "^2.4.1",
     "ng2-google-charts": "^2.1.0",

@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { routes } from './route/app.routing';
 import { RouterModule } from "@angular/router";
+import { AmChartsModule } from "amcharts3-angular2";
 
 import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
@@ -24,6 +25,7 @@ import { MainComponent } from './main/main.component';
     FormsModule,
     HttpModule,
     RouterModule,
+    AmChartsModule,
     BrowserModule,
     RouterModule.forRoot(routes)
   //   AgmCoreModule.forRoot({
