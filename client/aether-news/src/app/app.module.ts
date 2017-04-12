@@ -10,7 +10,10 @@ import { AppComponent } from './app.component';
 import { MapComponent } from './map/map.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MainComponent } from './main/main.component';
-// import { AgmCoreModule } from "angular2-google-maps/core"; //Angular 2 Google Maps
+
+//Services
+import { NewsApiService } from './service/news-api.service';
+
 
 
 @NgModule({
@@ -31,7 +34,7 @@ import { MainComponent } from './main/main.component';
   //   AgmCoreModule.forRoot({
   //     apiKey: "AIzaSyCLmODzvt82lNOv-p_JpvPoLqk8nME9kCA"})
   ],
-  providers: [],
+  providers: [NewsApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
