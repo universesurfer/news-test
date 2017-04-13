@@ -26,18 +26,23 @@ export class NewsApiService {
    }
 
 
-getBBC() {
-  return this.http.get(`https://newsapi.org/v1/articles?source=bbc-news&apiKey=dd5bd57f45cc49fb91999189ffcf95fd`)
+getBBC(){
+  return this.http.get('https://newsapi.org/v1/articles?source=bbc-news&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
       .map((res) => {
       this.bbc = res.json()
       return res.json();
     })
 }
 
+getAlJazeera(){
+  return this.http.get('https://newsapi.org/v1/articles?source=al-jazeera-english&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.bbc = res.json()
+      return res.json();
+    })
+}
 
-
-
-
+    // this.http.get('https://newsapi.org/v1/articles?source=al-jazeera-english&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
 
 
 }

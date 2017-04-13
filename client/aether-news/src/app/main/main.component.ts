@@ -1,6 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
+import { Component, OnInit, NgZone, Input, Output } from '@angular/core';
+import { RouterModule, Router } from "@angular/router";
 import { NewsApiService } from '../service/news-api.service';
-import { Router, RouterModule } from '@angular/router';
 import { Http, Response } from '@angular/http';
 
 @Component({
@@ -11,27 +11,47 @@ import { Http, Response } from '@angular/http';
 export class MainComponent implements OnInit {
 
   private bbcJSON: any;
+  private alJazeeraJSON: any;
+
+  // @Input() selectedCountries: any;
 
   constructor(
-    private newsAPI: NewsApiService,
     private ngZone: NgZone,
-    private http: Http
+    private http: Http,
+    private router: Router,
+    private newsAPI: NewsApiService
   ) { }
 
   ngOnInit() {
 
+    //Get the top 10 Headlines for BBC
     this.newsAPI.getBBC()
+    .subscribe((res: Response) =>  {
+      this.ngZone.run(()=>{
+        this.bbcJSON = res;
+        console.log(this.bbcJSON.articles);  //show top 10 articles from BBC Json
+    });
+  });
+
+      //Get the top 10 Headlines for Al Jazeera
+      this.newsAPI.getAlJazeera()
       .subscribe((res: Response) =>  {
         this.ngZone.run(()=>{
-          this.bbcJSON = res;
-          console.log(this.bbcJSON.articles);
+          this.alJazeeraJSON = res;
+          console.log(this.alJazeeraJSON.articles);  //show top 10 articles from BBC Json
+    });
   });
-});
-
-
 
 
 }
+
+
+// logCountries() {
+//   console.log(this.selectedCountries);
+// }
+
+
+
 
 
 }
