@@ -14,11 +14,10 @@ export class MainComponent implements OnInit {
   private bbcJSON: any;
   private alJazeeraJSON: any;
 
-  selectedCountries: any;
 
-
+//Logs our selected countries from child to parent in console
   share(event) {
-    alert("I am an event");
+    console.log(event);
   };
 
   constructor(
