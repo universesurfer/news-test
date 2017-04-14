@@ -1,7 +1,8 @@
-import { Component, OnInit, NgZone, Input, Output } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { RouterModule, Router } from "@angular/router";
 import { NewsApiService } from '../service/news-api.service';
 import { Http, Response } from '@angular/http';
+import { MapComponent } from '../map/map.component';
 
 @Component({
   selector: 'app-main',
@@ -13,7 +14,12 @@ export class MainComponent implements OnInit {
   private bbcJSON: any;
   private alJazeeraJSON: any;
 
-  // @Input() selectedCountries: any;
+  selectedCountries: any;
+
+
+  share(event) {
+    alert("I am an event");
+  };
 
   constructor(
     private ngZone: NgZone,

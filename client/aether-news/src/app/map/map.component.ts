@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { AmChartsService } from "amcharts3-angular2";
 
@@ -13,11 +13,21 @@ declare var AmCharts : any; //we must declare our AmCharts variable, like Google
 
 export class MapComponent implements OnInit {
 
+  @Output() shareCountries = new EventEmitter();
+  // @Output() selectedCountries: EventEmitter<string> = new EventEmitter<string>();
+  // @Output() selectedCountries: EventEmitter<any>;
+
   selectedCountries: any;
   map: any;
 
-  constructor()
- {}
+  fireShareEvent(event) {
+    this.shareCountries.emit(this.selectedCountries);
+    console.log(this.selectedCountries);
+  }
+
+
+  constructor(){
+  }
 
 
   ngOnInit() {
@@ -25,7 +35,7 @@ export class MapComponent implements OnInit {
 
     this.map = AmCharts.makeChart("mapdiv", {
            type: "map",
-           theme: "dark",
+           theme: "light",
            projection: "mercator",
            panEventsEnabled: true,
            backgroundColor: "#535364",
@@ -87,7 +97,7 @@ export class MapComponent implements OnInit {
                    selected.push(map.dataProvider.areas[i].enTitle);
 
            }
-
+          // console.log(this.selectedCountries);
            return selected;
        }
 
