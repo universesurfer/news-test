@@ -7,8 +7,10 @@ import { Router } from '@angular/router';
 @Injectable()
 export class NewsApiService {
 
-  public token: string;
+  public bingToken: string;
   public bbc: any;
+  public bingWorld: any;
+  public bingPolitics: any;
 
   constructor(
     private http: Http,
@@ -16,8 +18,8 @@ export class NewsApiService {
   ) {
 
     // Set Token Variable
-      this.token = "dd5bd57f45cc49fb91999189ffcf95fd";
-      if (this.token != null) {
+      this.bingToken = "3393050cb6564841a62d58f60b8f4ccb";
+      if (this.bingToken != null) {
         console.log("API token works");
       } else {
         alert("API token not working");
@@ -42,7 +44,31 @@ getAlJazeera(){
     })
 }
 
-    // this.http.get('https://newsapi.org/v1/articles?source=al-jazeera-english&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+
+getBingWorldNews() {
+  let headers = new Headers({ 'Ocp-Apim-Subscription-Key': this.bingToken });
+  let options = new RequestOptions({ headers: headers });
+    return this.http.get(`https://api.cognitive.microsoft.com/bing/v5.0/news/?Category=World&count=100`, options)
+      .map((res) => {
+        this.bingWorld = res.json()
+        return res.json();
+      })
+}
+
+getBingPoliticsNews() {
+  let headers = new Headers({ 'Ocp-Apim-Subscription-Key': this.bingToken });
+  let options = new RequestOptions({ headers: headers });
+    return this.http.get(`https://api.cognitive.microsoft.com/bing/v5.0/news/?Category=Politics&count=100`, options)
+      .map((res) => {
+        this.bingPolitics = res.json()
+        return res.json();
+      })
+}
+
+
+
+
+
 
 
 }
