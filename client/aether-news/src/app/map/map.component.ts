@@ -21,7 +21,7 @@ export class MapComponent implements OnInit {
 
   fireShareEvent(event) {
     this.shareCountries.emit(this.selectedCountries);
-    console.log(this.selectedCountries);
+    // console.log(this.selectedCountries);
   }
 
 
