@@ -5,6 +5,7 @@ import { Http, Response } from '@angular/http';
 import { MapComponent } from '../map/map.component';
 
 import * as _ from "lodash";
+// import * as _ from "underscore";
 
 @Component({
   selector: 'app-main',
@@ -20,16 +21,19 @@ export class MainComponent implements OnInit {
 
 
 
-  // public test: Array<[{test: 'hi'}, {test: 'lol'}, {test: 'bzzzz'}]>;
-
   share(event) {
-    console.log(_.map(this.bbcJSON, 'title'));
+    var newArray = this.bbcJSON.articles.map(function(a) {
+      return a.title;
+    });
 
-    // var newArray = _.map(this.bbcJSON, 'author');
+    console.log(newArray);
     // console.log(newArray);
     console.log(event);
 }
 
+// var nameArray = students.map(function (el) { return el.name; });
+// var foos = objArray.pluck("foo");
+// var result = objArray.map(function(a) {return a.foo;});
 
   // share(event) {
   //     if ( _.difference(event, this.test).length === 0) {
