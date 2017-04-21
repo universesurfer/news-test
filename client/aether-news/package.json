@@ -22,6 +22,7 @@
     "@angular/router": "^3.4.0",
     "@types/googlemaps": "^3.26.8",
     "@types/lodash": "^4.14.62",
+    "@types/underscore": "^1.8.0",
     "amcharts3-angular2": "github:amcharts/amcharts3-angular2",
     "angular2-google-maps": "^0.17.0",
     "core-js": "^2.4.1",
@@ -30,6 +31,7 @@
     "rxjs": "^5.1.0",
     "tslint": "^4.4.2",
     "typescript": "^2.0.10",
+    "underscore": "^1.8.3",
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
