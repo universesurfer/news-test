@@ -4,8 +4,8 @@ import { NewsApiService } from '../service/news-api.service';
 import { Http, Response } from '@angular/http';
 import { MapComponent } from '../map/map.component';
 
-import * as _ from "lodash";
-// import * as _ from "underscore";
+// import * as _ from "lodash";
+import * as _ from "underscore";
 
 @Component({
   selector: 'app-main',
@@ -22,14 +22,30 @@ export class MainComponent implements OnInit {
 
 
   share(event) {
-    var newArray = this.bbcJSON.articles.map(function(a) {
-      return a.title;
+
+    // var newArray = _.intersection(_.pluck(this.bbcJSON.articles, "title"), event);
+    var newArray = _.map(this.bbcJSON.articles, 'title');
+
+    let result =  event.map(function(word){
+    	return newArray.filter(function(article){
+        // console.log(article);
+      	return article.toString().indexOf(word) > -1;
+      });
     });
 
-    console.log(newArray);
+    console.log(result);
+
+
+    // console.log(newArray);
     // console.log(newArray);
     console.log(event);
 }
+
+// arr.forEach(function(a){if (a.indexOf('curl')>-1) console.log(a);})
+
+// var string = "foo",
+//     substring = "oo";
+// string.includes(substring);
 
 // var nameArray = students.map(function (el) { return el.name; });
 // var foos = objArray.pluck("foo");
