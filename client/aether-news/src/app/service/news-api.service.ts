@@ -11,6 +11,17 @@ export class NewsApiService {
   public bbc: any;
   public bingWorld: any;
   public bingPolitics: any;
+  public apNews: any;
+  public googleNews: any;
+  public economistNews: any;
+  public nytNews: any;
+  public wapoNews: any;
+  public cnnNews: any;
+  public newsweekNews: any;
+  public reutersNews: any;
+  public guardianUkNews: any;
+  public guardianAuNews: any;
+  public huffPostNews: any;
 
   constructor(
     private http: Http,
@@ -40,6 +51,94 @@ getAlJazeera(){
   return this.http.get('https://newsapi.org/v1/articles?source=al-jazeera-english&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
       .map((res) => {
       this.bbc = res.json()
+      return res.json();
+    })
+}
+
+getAP(){
+  return this.http.get('https://newsapi.org/v1/articles?source=associated-press&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.apNews = res.json()
+      return res.json();
+    })
+}
+
+getGoogle(){
+  return this.http.get('https://newsapi.org/v1/articles?source=google-news&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.googleNews = res.json()
+      return res.json();
+    })
+}
+
+getEconomist(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-economist&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.economistNews = res.json()
+      return res.json();
+    })
+}
+
+getNYT(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-new-york-times&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.nytNews = res.json()
+      return res.json();
+    })
+}
+
+getWAPO(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-washington-post&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.wapoNews = res.json()
+      return res.json();
+    })
+}
+
+getCNN(){
+  return this.http.get('https://newsapi.org/v1/articles?source=cnn&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.cnnNews = res.json()
+      return res.json();
+    })
+}
+
+getNEWSWEEK(){
+  return this.http.get('https://newsapi.org/v1/articles?source=newsweek&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.newsweekNews = res.json()
+      return res.json();
+    })
+}
+
+getREUTERS(){
+  return this.http.get('https://newsapi.org/v1/articles?source=reuters&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.reutersNews = res.json()
+      return res.json();
+    })
+}
+
+getGuardianUK(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-guardian-uk&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.guardianUkNews = res.json()
+      return res.json();
+    })
+}
+
+getGuardianAU(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-guardian-au&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.guardianAuNews = res.json()
+      return res.json();
+    })
+}
+
+getHuffPost(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-huffington-post&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.huffPostNews = res.json()
       return res.json();
     })
 }
