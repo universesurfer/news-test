@@ -37,10 +37,17 @@ export class MainComponent implements OnInit {
 
   //COUNTRY KEYWORD ARRAYS
   private americanArray: Array<string> = ["United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "White House", "Washington"];
+  private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "British Columbia", "Vancouver B.C.", "Vancouver, B.C."];
+  private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City"];
   private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR"];
+  private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping"];
+  private northKoreaArray: Array<string> = ["North Korea", "North Korean", "Pyongyang", "Kim Jong Un", "Kim Jong-Un", "North Koreans"];
+  private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi"];
   private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
   private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
   private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
+  private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
+  private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
 
 
 
@@ -57,9 +64,34 @@ export class MainComponent implements OnInit {
       console.log("America!");
     }
 
+    if (event.includes("Canada")) {
+      allArrayValues.push(this.canadaArray);
+      console.log("Canada");
+    }
+
+    if (event.includes("Mexico")) {
+      allArrayValues.push(this.mexicoArray);
+      console.log("Mexico");
+    }
+
     if (event.includes("Russia")) {
       allArrayValues.push(this.russiaArray);
       console.log("Ruskis!");
+    }
+
+    if (event.includes("China")) {
+      allArrayValues.push(this.chinaArray);
+      console.log("China");
+    }
+
+    if (event.includes("India")) {
+      allArrayValues.push(this.indiaArray);
+      console.log("India");
+    }
+
+    if(event.includes("North Korea")) {
+      allArrayValues.push(this.northKoreaArray);
+      console.log("North Korea");
     }
 
     if (event.includes("United Kingdom")) {
@@ -77,7 +109,15 @@ export class MainComponent implements OnInit {
       console.log("Zee Deutschland!");
     }
 
+    if (event.includes("Syria")) {
+      allArrayValues.push(this.syriaArray);
+      console.log("Syria");
+    }
 
+    if (event.includes("Turkey")) {
+      allArrayValues.push(this.turkeyArray);
+      console.log("Turkey");
+    }
 
 
 
