@@ -4,7 +4,7 @@ import { NewsApiService } from '../service/news-api.service';
 import { Http, Response } from '@angular/http';
 import { MapComponent } from '../map/map.component';
 
-// import * as _ from "lodash";
+import * as __ from "lodash";
 import * as _ from "underscore";
 
 @Component({
@@ -14,6 +14,8 @@ import * as _ from "underscore";
 })
 export class MainComponent implements OnInit {
 
+
+  //NEWS API JSONS
   private bbcJSON: any;
   private alJazeeraJSON: any;
   private bingWorldJSON: any;
@@ -30,14 +32,122 @@ export class MainComponent implements OnInit {
   private guardianAuJSON: any;
   private huffPostJSON: any;
 
+  //ARRAY OF SELECTED COUNTRY KEYWORD ARRAYS
+  private allCountryArrays: any = [];
+
+  //COUNTRY KEYWORD ARRAYS
+  private americanArray: Array<string> = ["United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "White House", "Washington"];
+  private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "British Columbia", "Vancouver B.C.", "Vancouver, B.C."];
+  private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City"];
+  private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR"];
+  private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping"];
+  private northKoreaArray: Array<string> = ["North Korea", "North Korean", "Pyongyang", "Kim Jong Un", "Kim Jong-Un", "North Koreans"];
+  private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi"];
+  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
+  private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
+  private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
+  private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
+  private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
+
 
 
   share(event) {
+
+    //Enhanced Search!  If a selected country is in the event array, push words relevant to that country to
+    //array that we will compare to to API JSONS
+    let country;
+    let allArrayValues = [];
+
+
+    if (event.includes("United States")) {
+      allArrayValues.push(this.americanArray);
+      console.log("America!");
+    }
+
+    if (event.includes("Canada")) {
+      allArrayValues.push(this.canadaArray);
+      console.log("Canada");
+    }
+
+    if (event.includes("Mexico")) {
+      allArrayValues.push(this.mexicoArray);
+      console.log("Mexico");
+    }
+
+    if (event.includes("Russia")) {
+      allArrayValues.push(this.russiaArray);
+      console.log("Ruskis!");
+    }
+
+    if (event.includes("China")) {
+      allArrayValues.push(this.chinaArray);
+      console.log("China");
+    }
+
+    if (event.includes("India")) {
+      allArrayValues.push(this.indiaArray);
+      console.log("India");
+    }
+
+    if(event.includes("North Korea")) {
+      allArrayValues.push(this.northKoreaArray);
+      console.log("North Korea");
+    }
+
+    if (event.includes("United Kingdom")) {
+      allArrayValues.push(this.ukArray);
+      console.log("United Kingdom!");
+    }
+
+    if (event.includes("France")) {
+      allArrayValues.push(this.franceArray);
+      console.log("Frenchies!");
+    }
+
+    if (event.includes("Germany")) {
+      allArrayValues.push(this.germanyArray);
+      console.log("Zee Deutschland!");
+    }
+
+    if (event.includes("Syria")) {
+      allArrayValues.push(this.syriaArray);
+      console.log("Syria");
+    }
+
+    if (event.includes("Turkey")) {
+      allArrayValues.push(this.turkeyArray);
+      console.log("Turkey");
+    }
+
+
+
+//   switch (event.includes(country) ) {
+//       case country === "United States":
+//       console.log("Murica!");
+//       // allArrays.push(this.americanArray);
+//       // console.log(this.americanArray);
+//
+//       case country === "Russia":
+//       console.log("Ruskis!");
+//       // allArrays.push(this.russiaArray);
+//       // console.log(this.russiaArray);
+//                       //Omitting the 'break' lets the switch statement continue to run through code
+//
+// }
+
+console.log(__.flatten(allArrayValues));
+
+
+
+
+
+
+
     //Combines NEWS API arrays for easier iteration
     var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles);
     console.log('Combined news article array', combinedArray);
 
-    //Iterating over the article titles to see if they have country name from selected countries
+    //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
     var newArray = _.map(combinedArray, 'title');
     let result =  event.map(function(word){
     	return newArray.filter(function(article){
@@ -46,11 +156,13 @@ export class MainComponent implements OnInit {
       });
     });
 
+
     console.log(result);
     console.log(event);
 
     let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
 
+    //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     let bingArray = _.map(combinedBing, 'description');
     let bingResult =  event.map(function(word){
     	return bingArray.filter(function(article){
@@ -61,7 +173,22 @@ export class MainComponent implements OnInit {
 
     console.log(bingResult);
 
+    //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
+    const matches = bingArray.filter(
+        article => allArrayValues.filter(
+            words => words.find(
+                word => article.toString().includes(word)
+            )
+        ).length > 1
+    );
+
+    console.log('articles with mentioning at least 2 countries:');
+    console.log(matches);
+
 }
+
+
+
 
 
   constructor(
