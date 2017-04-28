@@ -22,6 +22,7 @@ export class NewsApiService {
   public guardianUkNews: any;
   public guardianAuNews: any;
   public huffPostNews: any;
+  public wsjNews: any;
 
   constructor(
     private http: Http,
@@ -139,6 +140,14 @@ getHuffPost(){
   return this.http.get('https://newsapi.org/v1/articles?source=the-huffington-post&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
       .map((res) => {
       this.huffPostNews = res.json()
+      return res.json();
+    })
+}
+
+getWSJ(){
+  return this.http.get('https://newsapi.org/v1/articles?source=the-wall-street-journal&apiKey=dd5bd57f45cc49fb91999189ffcf95fd')
+      .map((res) => {
+      this.wsjNews = res.json()
       return res.json();
     })
 }
