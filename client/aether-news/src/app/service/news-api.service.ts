@@ -41,13 +41,13 @@ export class NewsApiService {
    }
 
 
-// getEventRegistry(){
-//   return this.http.get("http://eventregistry.org/json/article?sourceUri=www.bbc.co.uk&sourceUri=www.bbcamerica.com&sourceUri=www.theguardian.com&sourceUri=edition.cnn.com&sourceUri=www.washingtonpost.com&sourceUri=www.reuters.com&sourceUri=www.nytimes.com&sourceUri=www.economist.com&sourceUri=hosted.ap.org&sourceUri=www.wsj.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeSourceDetails=true&callback=JSON_CALLBACK&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
-//     .map((res) => {
-//       this.eventRegistry = res.json()
-//       return res.json();
-//     })
-// }
+getEventRegistry(){
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.bbc.co.uk&sourceUri=www.bbcamerica.com&sourceUri=www.theguardian.com&sourceUri=edition.cnn.com&sourceUri=www.washingtonpost.com&sourceUri=www.reuters.com&sourceUri=www.nytimes.com&sourceUri=www.economist.com&sourceUri=hosted.ap.org&sourceUri=www.wsj.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+    .map((res) => {
+      this.eventRegistry = res.json()
+      return res.json().articles;
+    })
+}
 
 
 getBBC(){

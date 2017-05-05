@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
 import { RouterModule, Router } from "@angular/router";
 import { NewsApiService } from '../service/news-api.service';
 import { Http, Response } from '@angular/http';
@@ -40,10 +40,11 @@ export class MainComponent implements OnInit {
   //Matched Article Keys/Properties to display in DOM
   private newsApiMatches: any = [];
   private bingApiMatches: any = [];
+  private allMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
   private americanArray: Array<string> = ["United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA"];
-  private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "British Columbia", "Vancouver B.C.", "Vancouver, B.C.", "NAFTA"];
+  private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "Columbia", "Vancouver B.C.", "Vancouver, B.C.", "NAFTA"];
   private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City", "NAFTA", "Vicente Fox", "Peña Nieto"];
   private brazilArray: Array<string> = ["Brazil", "Brasil", "Brazil's", "Brasil's", "Brazilian", "Brasilian", "Brazilian's", "Brasilian's", "Rio de Janeiro", "Sao Paulo", "Michel Temer"];
   private argentinaArray: Array<string> = ["Argentina", "Argentinian", "Argentina's", "Argentinian's", "Argentinians'", "Buenos Aires", "Mauricio Macri"];
@@ -71,6 +72,8 @@ export class MainComponent implements OnInit {
 
 
   share(event) {
+
+    //  var articleContainer = angular.element( document.querySelector( '.article' ) );
 
     //Enhanced Search!  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
@@ -298,7 +301,7 @@ console.log(__.flatten(allArrayValues));
     for (let article of combinedArray) {
       for (let match of combinedMatches) {
         if (article.title == match) {
-        var articleObject = {title: article.title, url: article.url};
+        var articleObject = {title: article.title, url: article.url, image: article.urlToImage};
         //Push article objects to global array
         this.newsApiMatches.push(articleObject);
         console.log("Article url: ", article.url, 'Article title: ', article.title);
@@ -310,7 +313,7 @@ console.log(__.flatten(allArrayValues));
     for (let article of combinedBing) {
       for (let match of combinedMatches) {
         if (article.description == match) {
-          var bingArticleObject = {title: article.name, url: article.url};
+          var bingArticleObject = {title: article.name, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name};
           //Push article objects to global array
           this.bingApiMatches.push(bingArticleObject);
           console.log("Article url: ", article.url, "Article description: ", article.description);
@@ -320,35 +323,7 @@ console.log(__.flatten(allArrayValues));
     }
         console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
-
-    // for ( var i = 0; i > combinedArray.length; i++ ) {
-    //   console.log('WORKING', combinedArray[i]);
-    //
-    //   combinedArray.forEach(function (article) {
-    //     combinedMatches.forEach(function (match) {
-    //       var articleTitle = article.title;
-    //       if (articleTitle == match) {
-    //         console.log('Article match URLs', combinedArray[i].url);
-    //         return combinedArray[i].url;
-    //       }
-    //
-    //       else {
-    //         console.log("Darn, doesn't seem to be workin'...");
-    //       }
-    //     });
-    //
-    //   });
-        // combinedMatches.forEach(function (match) {
-        //   if (combinedArray[i].title == match) {
-        //     console.log('Article match URLs', combinedArray[i].url);
-        //     return combinedArray[i].url;
-        //   }
-        //
-        //   else {
-        //     console.log("Darn, doesn't seem to be workin'...");
-        //   }
-        // });
-    // };
+    this.allMatches = this.newsApiMatches.concat(this.bingApiMatches);
 
 
 
@@ -360,20 +335,22 @@ console.log(__.flatten(allArrayValues));
     private ngZone: NgZone,
     private http: Http,
     private router: Router,
-    private newsAPI: NewsApiService
+    private newsAPI: NewsApiService,
+    // private myElement: ElementRef
+
   ) { }
 
   ngOnInit() {
 
-    // //Return current news from Event Registry
-    // //
-    // this.newsAPI.getEventRegistry()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(()=> {
-    //     this.eventRegistryJSON = res;
-    //     console.log("The Event Registry", this.eventRegistryJSON);
-    //   });
-    // });
+    //Return current news from Event Registry
+    //
+    this.newsAPI.getEventRegistry()
+    .subscribe((res: Response) => {
+      this.ngZone.run(()=> {
+        this.eventRegistryJSON = res;
+        console.log("The Event Registry", this.eventRegistryJSON);
+      });
+    });
 
     //Get the top 10 Headlines for BBC
     this.newsAPI.getBBC()
@@ -529,8 +506,8 @@ console.log(__.flatten(allArrayValues));
 }
 
 
-// logCountries() {
-//   console.log(this.selectedCountries);
+// goToArticle(url) {
+//   this.router.navigate(url);
 // }
 
 
