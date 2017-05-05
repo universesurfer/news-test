@@ -3,10 +3,18 @@
 <!-- <button (click)="logCountries()">Log Current Countries</button> -->
 
 <div class="container">
-  <div class="articles-container">
-    
+  <div class="articles-container" >
+    <div class="article" *ngFor="let article of allMatches">
+
+    <!-- <h3>  {{ article.title }}  </h3> -->
+    <!-- <span>{{article.url}}</span> -->
+    <div class="article-image"> <img src="{{article.image}}" alt=""> </div>
+    <a href="{{article.url}}"> <h3> {{ article.title }} </h3> </a>
+
+    <!-- <div>  {{ article.title }}  </div>
+    <div>  {{ article.url }}    </div> -->
 
 
-
+    </div>
   </div>
 </div>

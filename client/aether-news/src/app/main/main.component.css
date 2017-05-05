@@ -1,4 +1,24 @@
 .articles-container {
+  margin-top: 5%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+}
+
+.article {
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+}
+
+.article-image {
+  height: 100px;
+  width: 100px;
+}
+
+.article-image img {
+  height: 100%;
+  width: 100%;
 }
