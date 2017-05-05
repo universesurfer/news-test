@@ -16,6 +16,7 @@ export class MainComponent implements OnInit {
 
 
   //NEWS API JSONS
+  private eventRegistryJSON: any = [];
   private bbcJSON: any;
   private alJazeeraJSON: any;
   private bingWorldJSON: any;
@@ -35,6 +36,10 @@ export class MainComponent implements OnInit {
 
   //ARRAY OF SELECTED COUNTRY KEYWORD ARRAYS
   private allCountryArrays: any = [];
+
+  //Matched Article Keys/Properties to display in DOM
+  private newsApiMatches: any = [];
+  private bingApiMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
   private americanArray: Array<string> = ["United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA"];
@@ -243,6 +248,7 @@ console.log(__.flatten(allArrayValues));
     let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
 
     //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
+    // let bingArray = _.pick(_.find('description', 'title', 'url'));
     let bingArray = _.map(combinedBing, 'description');
     let bingResult =  event.map(function(word){
     	return bingArray.filter(function(article){
@@ -278,16 +284,76 @@ console.log(__.flatten(allArrayValues));
         )
     );
 
+    //Combine Articles of News API and Bing
+    // var allNews = newArray.concat(bingArray);
+    // console.log('Combined NEWS API and BING titles/descriptions', allNews);
+
+
     console.log('articles with mentioning at least 2 countries from News API:');
     console.log(newsApiMatches);
 
     const combinedMatches = bingMatches.concat(newsApiMatches);
     console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
+    for (let article of combinedArray) {
+      for (let match of combinedMatches) {
+        if (article.title == match) {
+        var articleObject = {title: article.title, url: article.url};
+        //Push article objects to global array
+        this.newsApiMatches.push(articleObject);
+        console.log("Article url: ", article.url, 'Article title: ', article.title);
+      }
+    }
+  }
+        console.log("Seeing if articles are pushing", this.newsApiMatches);
+
+    for (let article of combinedBing) {
+      for (let match of combinedMatches) {
+        if (article.description == match) {
+          var bingArticleObject = {title: article.name, url: article.url};
+          //Push article objects to global array
+          this.bingApiMatches.push(bingArticleObject);
+          console.log("Article url: ", article.url, "Article description: ", article.description);
+        }
+      }
+
+    }
+        console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
+
+
+    // for ( var i = 0; i > combinedArray.length; i++ ) {
+    //   console.log('WORKING', combinedArray[i]);
+    //
+    //   combinedArray.forEach(function (article) {
+    //     combinedMatches.forEach(function (match) {
+    //       var articleTitle = article.title;
+    //       if (articleTitle == match) {
+    //         console.log('Article match URLs', combinedArray[i].url);
+    //         return combinedArray[i].url;
+    //       }
+    //
+    //       else {
+    //         console.log("Darn, doesn't seem to be workin'...");
+    //       }
+    //     });
+    //
+    //   });
+        // combinedMatches.forEach(function (match) {
+        //   if (combinedArray[i].title == match) {
+        //     console.log('Article match URLs', combinedArray[i].url);
+        //     return combinedArray[i].url;
+        //   }
+        //
+        //   else {
+        //     console.log("Darn, doesn't seem to be workin'...");
+        //   }
+        // });
+    // };
+
+
+
+
 }
-
-
-
 
 
   constructor(
@@ -298,6 +364,16 @@ console.log(__.flatten(allArrayValues));
   ) { }
 
   ngOnInit() {
+
+    // //Return current news from Event Registry
+    // //
+    // this.newsAPI.getEventRegistry()
+    // .subscribe((res: Response) => {
+    //   this.ngZone.run(()=> {
+    //     this.eventRegistryJSON = res;
+    //     console.log("The Event Registry", this.eventRegistryJSON);
+    //   });
+    // });
 
     //Get the top 10 Headlines for BBC
     this.newsAPI.getBBC()

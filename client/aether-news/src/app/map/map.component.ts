@@ -35,7 +35,7 @@ export class MapComponent implements OnInit {
     this.map = AmCharts.makeChart("mapdiv", {
            type: "map",
            theme: "dark",
-           projection: "mercator",
+           projection: "Eckert 5",
            panEventsEnabled: true,
            backgroundColor: "#535364",
            backgroundAlpha: 1,
