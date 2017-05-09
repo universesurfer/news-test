@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/core';
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { AmChartsService } from "amcharts3-angular2";
 
@@ -13,7 +13,10 @@ declare var AmCharts : any; //we must declare our AmCharts variable, like Google
 
 export class MapComponent implements OnInit {
 
+
   @Output() shareCountries = new EventEmitter();
+
+
   // @Output() selectedCountries: EventEmitter<string> = new EventEmitter<string>();
   // @Output() selectedCountries: EventEmitter<any>;
 
