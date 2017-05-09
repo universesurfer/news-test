@@ -6,6 +6,7 @@ import { MapComponent } from '../map/map.component';
 
 import * as __ from "lodash";
 import * as _ from "underscore";
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-main',
@@ -15,8 +16,18 @@ import * as _ from "underscore";
 export class MainComponent implements OnInit {
 
 
-  //NEWS API JSONS
-  private eventRegistryJSON: any = [];
+//EVENT REGISTRY JSONS
+  private eventRegistryBBC: any = [];
+  private eventRegistryGuardian: any = [];
+  private eventRegistryCNN: any = [];
+  private eventRegistryWAPO: any = [];
+  private eventRegistryReuters: any = [];
+  private eventRegistryNYT: any = [];
+  private eventRegistryEconomist: any = [];
+  private eventRegistryAP: any = [];
+  private eventRegistryWSJ: any = [];
+
+//NEWS API JSONS
   private bbcJSON: any;
   private alJazeeraJSON: any;
   private bingWorldJSON: any;
@@ -40,6 +51,7 @@ export class MainComponent implements OnInit {
   //Matched Article Keys/Properties to display in DOM
   private newsApiMatches: any = [];
   private bingApiMatches: any = [];
+  private eventRegistryMatches: any = [];
   private allMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
@@ -56,6 +68,7 @@ export class MainComponent implements OnInit {
   private northKoreaArray: Array<string> = ["North Korea", "North Korean", "Pyongyang", "Kim Jong Un", "Kim Jong-Un", "North Koreans"];
   private southKoreaArray: Array<string> = ["South Korea", "South Korean", "Seoul"];
   private japanArray: Array<string> = ["Japan", "Japanese", "Japan's", "Shinzo Abe", "Tokyo", "Nagasaki"];
+  private philippinesArray: Array<string> = ["Philippines", "Duterte", "Manila"];
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
   private pakistanArray: Array<string> = ["Pakistan", "Pakistani", "Pakistan's", "Kashmir", "Mamnoon Hussain", "Nawaz Sharif"];
   private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
@@ -69,6 +82,8 @@ export class MainComponent implements OnInit {
   private saudiArabiaArray: Array<string> = ["Saudi Arabia", "Saudi", "Saudi's", "Saudi Arabian", "Saudi Arabia's", "King Salman"];
   private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
 
+  private somaliaArray: Array<string> = ["Somalia", "Somalia's", "Somalian", "Somalians", "Al-Shabaab", "al-Shabaab", "al-shabaab", "Mohamed Abdullahi Mohamed", "Mogadishu"];
+
 
 
   share(event) {
@@ -77,6 +92,9 @@ export class MainComponent implements OnInit {
 
     //Enhanced Search!  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
+
+    // $(".articles-container").empty();
+
     let country;
     let allArrayValues = [];
 
@@ -156,6 +174,11 @@ export class MainComponent implements OnInit {
       console.log("Japan");
     }
 
+    if (event.includes("Philippines")) {
+      allArrayValues.push(this.philippinesArray);
+      console.log("Philippines!");
+    }
+
     if (event.includes("United Kingdom")) {
       allArrayValues.push(this.ukArray);
       console.log("United Kingdom!");
@@ -207,6 +230,11 @@ export class MainComponent implements OnInit {
     }
 
 
+    if (event.includes("Somalia")) {
+      allArrayValues.push(this.somaliaArray);
+      console.log("Somalia!");
+    }
+
 
 //   switch (event.includes(country) ) {
 //       case country === "United States":
@@ -233,6 +261,36 @@ console.log(__.flatten(allArrayValues));
     //Combines NEWS API arrays for easier iteration
     var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
     console.log('Combined news article array', combinedArray);
+
+
+    var combinedEventRegistry = this.eventRegistryBBC.concat(this.eventRegistryGuardian, this.eventRegistryCNN, this.eventRegistryWAPO, this.eventRegistryReuters, this.eventRegistryNYT, this.eventRegistryEconomist, this.eventRegistryAP, this.eventRegistryWSJ);
+    console.log("Combined Event Registry Articles Array", combinedEventRegistry);
+
+
+    //SEARCHING EventRegistry NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
+    let eventRegistryTitles = _.map(combinedEventRegistry, 'title');
+    console.log("Seeing if ER mapping works", eventRegistryTitles);
+    let eventRegistryResult = event.map(function(word){
+      return eventRegistryTitles.filter(function(article){
+        return article.toString().indexOf(word) > -1;
+      });
+    });
+
+    console.log("Mapped Event Registry Result", eventRegistryResult);
+
+
+    //Event Registry Api
+    //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
+    const eventRegistryMatches = eventRegistryTitles.filter(
+      article => allArrayValues.every(
+          words => words.find(
+              word => article.toString().includes(word)
+          )
+      )
+  );
+
+  console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
+
 
     //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
     // var newArray = _.map(combinedArray, 'description');
@@ -298,10 +356,23 @@ console.log(__.flatten(allArrayValues));
     const combinedMatches = bingMatches.concat(newsApiMatches);
     console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
+
+    for (let article of combinedEventRegistry) {
+      for (let match of eventRegistryMatches) {
+        if (article.title == match) {
+        var eventRegistryObject = {title: article.title, description: article.description, url: article.url, image: article.urlToImage, source: article.source.title, thumbnail: article.source.thumbImage };
+        //Push article objects to global array
+        this.eventRegistryMatches.push(eventRegistryObject);
+        console.log("Article url: ", article.url, 'Article title: ', article.title);
+      }
+    }
+  }
+        console.log("Seeing if ER articles are pushing", this.eventRegistryMatches);
+
     for (let article of combinedArray) {
       for (let match of combinedMatches) {
         if (article.title == match) {
-        var articleObject = {title: article.title, url: article.url, image: article.urlToImage};
+        var articleObject = {title: article.title, description: article.description, url: article.url, image: article.urlToImage};
         //Push article objects to global array
         this.newsApiMatches.push(articleObject);
         console.log("Article url: ", article.url, 'Article title: ', article.title);
@@ -310,10 +381,13 @@ console.log(__.flatten(allArrayValues));
   }
         console.log("Seeing if articles are pushing", this.newsApiMatches);
 
+
+
+
     for (let article of combinedBing) {
       for (let match of combinedMatches) {
         if (article.description == match) {
-          var bingArticleObject = {title: article.name, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name};
+          var bingArticleObject = {title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name};
           //Push article objects to global array
           this.bingApiMatches.push(bingArticleObject);
           console.log("Article url: ", article.url, "Article description: ", article.description);
@@ -323,7 +397,10 @@ console.log(__.flatten(allArrayValues));
     }
         console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
-    this.allMatches = this.newsApiMatches.concat(this.bingApiMatches);
+
+    //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
+    this.allMatches = this.newsApiMatches.concat(this.bingApiMatches, this.eventRegistryMatches);
+    console.log("All matches", this.allMatches);
 
 
 
@@ -342,15 +419,90 @@ console.log(__.flatten(allArrayValues));
 
   ngOnInit() {
 
-    //Return current news from Event Registry
+    //Return current news from Event Registry BBC
     //
-    this.newsAPI.getEventRegistry()
+    this.newsAPI.getEventRegistryBBC()
     .subscribe((res: Response) => {
       this.ngZone.run(()=> {
-        this.eventRegistryJSON = res;
-        console.log("The Event Registry", this.eventRegistryJSON);
+        this.eventRegistryBBC = res;
+        console.log("BBC - The Event Registry", this.eventRegistryBBC);
       });
     });
+
+    //Return current news from Event Registry Guardian
+    this.newsAPI.getEventRegistryGuardian()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryGuardian = res;
+        console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
+      });
+    });
+
+    //Return current news from Event Registry CNN International
+    this.newsAPI.getEventRegistryCNN()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryCNN = res;
+        console.log("CNN International - Event Registry", this.eventRegistryCNN);
+      });
+    });
+
+    //Return current news from Event Registry Washington Post
+    this.newsAPI.getEventRegistryWAPO()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryWAPO = res;
+        console.log("Washington Post - Event Registry", this.eventRegistryWAPO);
+      });
+    });
+
+    //Return current news from Event Registry Reuters
+    this.newsAPI.getEventRegistryReuters()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryReuters = res;
+        console.log("Reuters - Event Registry", this.eventRegistryReuters);
+      });
+    });
+
+    //Return current news from Event Registry New York Times
+    this.newsAPI.getEventRegistryNYT()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryNYT = res;
+        console.log("NYT - Event Registry", this.eventRegistryNYT);
+      });
+    });
+
+    //Return current news from Event Registry Economist
+    this.newsAPI.getEventRegistryEconomist()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryEconomist = res;
+        console.log("Economist - Event Registry", this.eventRegistryEconomist);
+      });
+    });
+
+    //Return current news from Event Registry Associated Press
+    this.newsAPI.getEventRegistryAP()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryAP = res;
+        console.log("Associated Press - Event Registry", this.eventRegistryAP);
+      });
+    });
+
+    //Return current news from Event Registry Wall Street Journal
+    this.newsAPI.getEventRegistryWSJ()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryWSJ = res;
+        console.log("Wall Street Journal - Event Registry", this.eventRegistryWSJ);
+      });
+    });
+
+
+
 
     //Get the top 10 Headlines for BBC
     this.newsAPI.getBBC()

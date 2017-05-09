@@ -14,11 +14,16 @@
 }
 
 .article-image {
-  height: 100px;
-  width: 100px;
+  height: 100%;
+  width: 180px;
 }
 
 .article-image img {
-  height: 100%;
-  width: 100%;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+.article-info {
+  display: flex;
+  flex-wrap: wrap;
 }
