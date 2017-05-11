@@ -1,3 +1,5 @@
+<app-navbar></app-navbar>
+
 <app-map (shareCountries)="share($event)"></app-map>
 <!-- <app-map [selectedCountries]="selectedCountries"></app-map> -->
 <!-- <button (click)="logCountries()">Log Current Countries</button> -->
@@ -12,7 +14,7 @@
 
       <div class="article-image"> <img src="{{article.image}}" alt=""> </div>
 
-
+<div class="title-wrapper">
   <div class="article-info">
     <a href="{{article.url}}"> <h3> {{ article.title }} </h3> </a>
     <div class="article-description">  {{ article.description }} </div>
@@ -22,12 +24,7 @@
     <div class="article-thumb"> <img src="{{article.thumbnail}}" alt=""> </div>
     <div class="article-source"> {{ article.source }} </div>
   </div>
-
-
-
-
-    <!-- <div>  {{ article.title }}  </div>
-    <div>  {{ article.url }}    </div> -->
+</div>
 
 
       </div>
