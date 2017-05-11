@@ -85,7 +85,7 @@ getEventRegistryCNN(){
 
 //Washington Post
 getEventRegistryWAPO(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.washingtonpost.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.washingtonpost.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=rel&resultType=articles&articlesIncludeArticleLocation=true&articlesCount=200&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeConceptDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesIncludeSourceLocation=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryWAPO = res.json()
     return res.json().articles.results;
