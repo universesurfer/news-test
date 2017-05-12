@@ -56,9 +56,13 @@ public testArray: string = "this is a test array";
   private allMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
+
+  //NORTH AMERICA
   private americanArray: Array<string> = ["NSA", "CIA", "FBI", "United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA"];
   private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "Columbia", "Vancouver B.C.", "Vancouver, B.C.", "NAFTA"];
   private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City", "NAFTA", "Vicente Fox", "Peña Nieto"];
+
+  //SOUTH AMERICA
   private brazilArray: Array<string> = ["Brazil", "Brasil", "Brazil's", "Brasil's", "Brazilian", "Brasilian", "Brazilian's", "Brasilian's", "Rio de Janeiro", "Sao Paulo", "Michel Temer"];
   private argentinaArray: Array<string> = ["Argentina", "Argentinian", "Argentina's", "Argentinian's", "Argentinians'", "Buenos Aires", "Mauricio Macri"];
   private colombiaArray: Array<string> = ["Colombia", "Colombians", "Columbia's", "FARC", "Juan Manuel Santos", "Bogotá"];
@@ -75,8 +79,7 @@ public testArray: string = "this is a test array";
 
 
   private cubaArray: Array<string> = ["Cuba", "Cuban", "Cuba's", "Cuban's", "Fidel Castro", "Raul Castro", "Che Guevara"];
-  private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR", "Siberia", "Siberian", "Medvedev"];
-  private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
+
 
   //ASIA
   private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping"];
@@ -94,7 +97,6 @@ public testArray: string = "this is a test array";
   private myanmarArray: Array<string> = ["Myanmar", "Myanmar's", "Burma", "Naypyidaw", "Burmese", "Htin Kyaw"];
   private mongoliaArray: Array<string> = ["Mongolia", "Mongolian", "Mongolia's", "Ulaanbaatar", "Gobi", "Tsakhiagiin Elbegdorj"];
   private nepalArray: Array<string> = ["Nepal", "Nepali", "Nepal's", "Nepalese", "Kathmandu", "Everest", "Bidhya Devi Bhandari"];
-
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
 
   //THE MIDDLE EAST
@@ -107,22 +109,28 @@ public testArray: string = "this is a test array";
   private lebanonArray: Array<string> = ["Lebanon", "Lebanon's", "Lebanese", "Beirut", "Michel Aoun"];
   private yemenArray: Array<string> = ["Yemen", "Yemen's", "Yemeni", "Sana'a", "Abdrabbuh Mansur Hadi"];
   private omanArray: Array<string> = ["Oman", "Oman's", "Muscat", "Qaboos bin Said al Said", "Sultan Qaboos"];
+  private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
+  private egyptArray: Array<string> = ["Egypt", "Egyptian", "Cairo", "Egypt's", "Egyptian's", "Abdel Fattah el-Sisi"];
+  private saudiArabiaArray: Array<string> = ["Saudi Arabia", "Saudi", "Saudi's", "Saudi Arabian", "Saudi Arabia's", "King Salman"];
+  private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
 
 
-
+//EUROPE
+  private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR", "Siberia", "Siberian", "Medvedev"];
+  private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
   private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
   private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
-  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
   private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
   private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
   private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
   private italyArray: Array<string> = ["Italy", "Italy's", "Italians", "Rome", "Sergio Mattarella"];
   private netherlandsArray: Array<string> = ["Netherlands", "Dutch", "Mark Rutte", "Amsterdam"];
   private belgiumArray: Array<string> = ["Belgium", "Belgium's", "Belgian", "Brussels", "City of Brussels", "Charles Michel"];
-  private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
-  private egyptArray: Array<string> = ["Egypt", "Egyptian", "Cairo", "Egypt's", "Egyptian's", "Abdel Fattah el-Sisi"];
-  private saudiArabiaArray: Array<string> = ["Saudi Arabia", "Saudi", "Saudi's", "Saudi Arabian", "Saudi Arabia's", "King Salman"];
-  private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
+
+
+  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
+
+
 
   private somaliaArray: Array<string> = ["Somalia", "Somalia's", "Somalian", "Somalians", "Al-Shabaab", "al-Shabaab", "al-shabaab", "Mohamed Abdullahi Mohamed", "Mogadishu"];
 
