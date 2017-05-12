@@ -1,5 +1,5 @@
 .articles-container {
-  width: 1000px;
+  width: 100%;
   margin-top: 5%;
   margin-left: auto;
   margin-right: auto;
@@ -30,6 +30,11 @@
 .article-image {
   height: 100%;
   width: 180px;
+}
+
+.article-thumb img {
+  max-height: 100%;
+  max-width: 100%;
 }
 
 .article-info {

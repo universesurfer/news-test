@@ -15,7 +15,7 @@ import * as $ from 'jquery';
 })
 export class MainComponent implements OnInit {
 
-public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "not a duplicate"];
+public testArray: string = "this is a test array";
 
 //EVENT REGISTRY JSONS
   private eventRegistryBBC: any = [];
@@ -56,41 +56,87 @@ public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "
   private allMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
+
+  //NORTH AMERICA
   private americanArray: Array<string> = ["NSA", "CIA", "FBI", "United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA"];
   private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "Columbia", "Vancouver B.C.", "Vancouver, B.C.", "NAFTA"];
   private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City", "NAFTA", "Vicente Fox", "Peña Nieto"];
+
+  //SOUTH AMERICA
   private brazilArray: Array<string> = ["Brazil", "Brasil", "Brazil's", "Brasil's", "Brazilian", "Brasilian", "Brazilian's", "Brasilian's", "Rio de Janeiro", "Sao Paulo", "Michel Temer"];
   private argentinaArray: Array<string> = ["Argentina", "Argentinian", "Argentina's", "Argentinian's", "Argentinians'", "Buenos Aires", "Mauricio Macri"];
+  private colombiaArray: Array<string> = ["Colombia", "Colombians", "Columbia's", "FARC", "Juan Manuel Santos", "Bogotá"];
+  private boliviaArray: Array<string> = ["Bolivia", "Bolivia's", "Bolivian", "Bolivians", "Evo Morales", "Sucre"];
+  private peruArray: Array<string> = ["Peru", "Peru's", "Peruvians", "Lima", "Pedro Pablo Kuczynski"];
+  private ecuadorArray: Array<string> = ["Ecuador", "Ecuador's", "Rafael Correa", "Quito"];
+  private venezuelaArray: Array<string> = ["Venezuela", "Venezuelan", "Venezuela's", "Caracas", "Nicolás Maduro"];
+  private chileArray: Array<string> = ["Chile", "Chile's", "Chilean", "Michelle Bachelet", "Santiago"];
+  private paraguayArray: Array<string> = ["Paraguay", "Paraguay's", "Paraguayan", "Asunción", "Horacio Cartes"];
+  private uruguayArray: Array<string> = ["Uruguay", "Uruguay's", "Uruguayan", "Tabaré Vázquez", "Montevideo"];
+  private guyanaArray: Array<string> = ["Guyana", "Guyanan", "Guyana's", "David A. Granger"];
+  private surinameArray: Array<string> = ["Suriname", "Suriname's", "Paramaribo", "Dési Bouterse"];
+  private frenchGuianaArray: Array<string> = ["French Guiana", "French Guianan", "Guiana", "Rodolphe Alexandre"];
+
+
   private cubaArray: Array<string> = ["Cuba", "Cuban", "Cuba's", "Cuban's", "Fidel Castro", "Raul Castro", "Che Guevara"];
-  private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR"];
-  private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
+
+
+  //ASIA
   private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping"];
   private taiwanArray: Array<string> = ["Taiwan", "Taiwanese", "Tsai Ing-wen"];
   private northKoreaArray: Array<string> = ["North Korea", "North Korean", "Pyongyang", "Kim Jong Un", "Kim Jong-Un", "North Koreans"];
   private southKoreaArray: Array<string> = ["South Korea", "South Korean", "Seoul"];
   private japanArray: Array<string> = ["Japan", "Japanese", "Japan's", "Shinzo Abe", "Tokyo", "Nagasaki"];
-  private philippinesArray: Array<string> = ["Philippines", "Duterte", "Manila"];
+  private indonesiaArray: Array<string> = ["Indonesia", "Indonesian", "Indonesians", "Indonesia's", "Jakarta", "Bali", "Joko Widodo"];
+  private philippinesArray: Array<string> = ["Philippines", "Duterte", "Rodrigo Duterte", "Manila"];
+  private malaysiaArray: Array<string> = ["Malaysia", "Malaysian", "Malaysia's", "Kuala Lumpur", "Dato' Sri Haji"];
+  private cambodiaArray: Array<string> = ["Cambodia", "Cambodian", "Cambodia's", "Phnom Penh", "Hun Sen"];
+  private vietnamArray: Array<string> = ["Vietnam", "Vietnamese", "Vietnam's", "Hanoi"];
+  private thailandArray: Array<string> = ["Thailand", "Thailand's", "Thai", "Bangkok", "Somsak Kiatsuranont", "Bhumibol Adulyadej", "Yingluck Shinawatra"];
+  private laosArray: Array<string> = ["Lao People's Democratic Republic", "Laos", "Vientiane", "Khmer"];
+  private myanmarArray: Array<string> = ["Myanmar", "Myanmar's", "Burma", "Naypyidaw", "Burmese", "Htin Kyaw"];
+  private mongoliaArray: Array<string> = ["Mongolia", "Mongolian", "Mongolia's", "Ulaanbaatar", "Gobi", "Tsakhiagiin Elbegdorj"];
+  private nepalArray: Array<string> = ["Nepal", "Nepali", "Nepal's", "Nepalese", "Kathmandu", "Everest", "Bidhya Devi Bhandari"];
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
+
+  //THE MIDDLE EAST
   private pakistanArray: Array<string> = ["Pakistan", "Pakistani", "Pakistan's", "Kashmir", "Mamnoon Hussain", "Nawaz Sharif"];
-  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
-  private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
-  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
-  private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
-  private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
-  private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
+  private afghanistanArray: Array<string> = ["Afghanistan", "Afghanistan's", "Kabul", "Afghani", "Hamid Karzai", "Ashraf Ghani"];
+  private iranArray: Array<string> = ["Iran", "Iranian", "Iran's", "Iranians'", "Hassan Rouhani", "Khamenei", "Tehran"];
+  private iraqArray: Array<string> = ["Iraq", "Iraqi", "Iraq's", "Baghdad", "Fuad Masum"];
+  private jordanArray: Array<string> = ["Jordan", "Jordanian", "Jordan's", "Amman"];
+  private israelArray: Array<string> = ["Israel", "Israeli", "Israel's", "Israelis", "Tel Aviv", "Reuven Rivlin", "Jerusalem", "Mossad", "IDF", "Shimon Peres", "Netanyahu"];
+  private lebanonArray: Array<string> = ["Lebanon", "Lebanon's", "Lebanese", "Beirut", "Michel Aoun"];
+  private yemenArray: Array<string> = ["Yemen", "Yemen's", "Yemeni", "Sana'a", "Abdrabbuh Mansur Hadi"];
+  private omanArray: Array<string> = ["Oman", "Oman's", "Muscat", "Qaboos bin Said al Said", "Sultan Qaboos"];
   private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
   private egyptArray: Array<string> = ["Egypt", "Egyptian", "Cairo", "Egypt's", "Egyptian's", "Abdel Fattah el-Sisi"];
   private saudiArabiaArray: Array<string> = ["Saudi Arabia", "Saudi", "Saudi's", "Saudi Arabian", "Saudi Arabia's", "King Salman"];
   private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
+
+
+//EUROPE
+  private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR", "Siberia", "Siberian", "Medvedev"];
+  private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
+  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
+  private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
+  private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
+  private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
+  private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
+  private italyArray: Array<string> = ["Italy", "Italy's", "Italians", "Rome", "Sergio Mattarella"];
+  private netherlandsArray: Array<string> = ["Netherlands", "Dutch", "Mark Rutte", "Amsterdam"];
+  private belgiumArray: Array<string> = ["Belgium", "Belgium's", "Belgian", "Brussels", "City of Brussels", "Charles Michel"];
+
+
+  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
+
+
 
   private somaliaArray: Array<string> = ["Somalia", "Somalia's", "Somalian", "Somalians", "Al-Shabaab", "al-Shabaab", "al-shabaab", "Mohamed Abdullahi Mohamed", "Mogadishu"];
 
 
 
   share(event) {
-
-
-    //  var articleContainer = angular.element( document.querySelector( '.article' ) );
 
     //Enhanced Search!  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
@@ -126,6 +172,61 @@ public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "
       console.log("Argentina");
     }
 
+    if (event.includes("Colombia")) {
+      allArrayValues.push(this.colombiaArray);
+      console.log("Colombia");
+    }
+
+    if (event.includes("Bolivia")) {
+      allArrayValues.push(this.boliviaArray);
+      console.log("Bolivia");
+    }
+
+    if (event.includes("Peru")) {
+      allArrayValues.push(this.peruArray);
+      console.log("Peru");
+    }
+
+    if (event.includes("Ecuador")) {
+      allArrayValues.push(this.ecuadorArray);
+      console.log("Ecuador");
+    }
+
+    if (event.includes("Venezuela")) {
+      allArrayValues.push(this.venezuelaArray);
+      console.log("Venezuela");
+    }
+
+    if (event.includes("Chile")) {
+      allArrayValues.push(this.chileArray);
+      console.log("Chile");
+    }
+
+    if (event.includes("Paraguay")) {
+      allArrayValues.push(this.paraguayArray);
+      console.log("Paraguay");
+    }
+
+    if (event.includes("Uruguay")) {
+      allArrayValues.push(this.uruguayArray);
+      console.log("Uruguay");
+    }
+
+    if (event.includes("Guyana")) {
+      allArrayValues.push(this.guyanaArray);
+      console.log("Guyana");
+    }
+
+    if (event.includes("French Guiana")) {
+      allArrayValues.push(this.frenchGuianaArray);
+      console.log("French Guiana");
+    }
+
+    if (event.includes("Suriname")) {
+      allArrayValues.push(this.surinameArray);
+      console.log("Suriname");
+    }
+
     if (event.includes("Cuba")) {
       allArrayValues.push(this.cubaArray);
       console.log("Cuba!");
@@ -141,6 +242,7 @@ public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "
       console.log("Ukraine");
     }
 
+//ASIA
     if (event.includes("China")) {
       allArrayValues.push(this.chinaArray);
       console.log("China");
@@ -151,14 +253,101 @@ public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "
       console.log("Taiwan");
     }
 
+    if (event.includes("Indonesia")) {
+      allArrayValues.push(this.indonesiaArray);
+      console.log("Indonesia");
+    }
+
+    if (event.includes("Malaysia")) {
+      allArrayValues.push(this.malaysiaArray);
+      console.log("Malaysia");
+    }
+
+    if (event.includes("Cambodia")) {
+      allArrayValues.push(this.cambodiaArray);
+      console.log("Cambodia");
+    }
+
+    if (event.includes("Vietnam")) {
+      allArrayValues.push(this.vietnamArray);
+      console.log("Vietnam");
+    }
+
+    if (event.includes("Thailand")) {
+      allArrayValues.push(this.thailandArray);
+      console.log("Thailand");
+    }
+
+    if (event.includes("Laos")) {
+      allArrayValues.push(this.laosArray);
+      console.log("Laos");
+    }
+
+    if (event.includes("Myanmar")) {
+      allArrayValues.push(this.myanmarArray);
+      console.log("Myanmar");
+    }
+
+    if (event.includes("Mongolia")) {
+      allArrayValues.push(this.mongoliaArray);
+      console.log("Mongolia");
+    }
+
+    if (event.includes("Nepal")) {
+      allArrayValues.push(this.nepalArray);
+      console.log("Nepal");
+    }
+
     if (event.includes("India")) {
       allArrayValues.push(this.indiaArray);
       console.log("India");
     }
 
+
+
     if (event.includes("Pakistan")) {
       allArrayValues.push(this.pakistanArray);
       console.log("Pakistan");
+    }
+
+    if (event.includes("Afghanistan")) {
+      allArrayValues.push(this.afghanistanArray);
+      console.log("Afghanistan");
+    }
+
+    if (event.includes("Iran")) {
+      allArrayValues.push(this.iranArray);
+      console.log("Iran");
+    }
+
+    if (event.includes("Iraq")) {
+      allArrayValues.push(this.iraqArray);
+      console.log("Iraq");
+    }
+
+    if (event.includes("Jordan")) {
+      allArrayValues.push(this.jordanArray);
+      console.log("Jordan");
+    }
+
+    if (event.includes("Israel")) {
+      allArrayValues.push(this.israelArray);
+      console.log("Israel");
+    }
+
+    if (event.includes("Lebanon")) {
+      allArrayValues.push(this.lebanonArray);
+      console.log("Lebanon");
+    }
+
+    if (event.includes("Yemen")) {
+      allArrayValues.push(this.yemenArray);
+      console.log("Yemen");
+    }
+
+    if (event.includes("Oman")) {
+      allArrayValues.push(this.omanArray);
+      console.log("Oman");
     }
 
     if(event.includes("North Korea")) {
@@ -209,6 +398,21 @@ public duplicateArray: Array<string> = ["duplicate", "duplicate", "duplicate", "
     if (event.includes("Germany")) {
       allArrayValues.push(this.germanyArray);
       console.log("Zee Deutschland!");
+    }
+
+    if (event.includes("Italy")) {
+      allArrayValues.push(this.italyArray);
+      console.log("Italy");
+    }
+
+    if (event.includes("Netherlands")) {
+      allArrayValues.push(this.netherlandsArray);
+      console.log("Netherlands");
+    }
+
+    if (event.includes("Belgium")) {
+      allArrayValues.push(this.belgiumArray);
+      console.log("Belgium");
     }
 
     if (event.includes("Syria")) {
@@ -452,7 +656,7 @@ console.log(__.flatten(allArrayValues));
     //   });
     // });
     //
-    // //Return current news from Event Registry CNN International
+    //Return current news from Event Registry CNN International
     // this.newsAPI.getEventRegistryCNN()
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {
@@ -461,24 +665,24 @@ console.log(__.flatten(allArrayValues));
     //   });
     // });
     //
-    //Return current news from Event Registry Washington Post
-    this.newsAPI.getEventRegistryWAPO()
-    .subscribe((res: Response) => {
-      this.ngZone.run(() => {
-        this.eventRegistryWAPO = res;
-        console.log("Washington Post - Event Registry", this.eventRegistryWAPO);
-      });
-    });
+    // //Return current news from Event Registry Washington Post
+    // this.newsAPI.getEventRegistryWAPO()
+    // .subscribe((res: Response) => {
+    //   this.ngZone.run(() => {
+    //     this.eventRegistryWAPO = res;
+    //     console.log("Washington Post - Event Registry", this.eventRegistryWAPO);
+    //   });
+    // });
     //
     //Return current news from Event Registry Reuters
-    this.newsAPI.getEventRegistryReuters()
-    .subscribe((res: Response) => {
-      this.ngZone.run(() => {
-        this.eventRegistryReuters = res;
-        console.log("Reuters - Event Registry", this.eventRegistryReuters);
-      });
-    });
-    //
+    // this.newsAPI.getEventRegistryReuters()
+    // .subscribe((res: Response) => {
+    //   this.ngZone.run(() => {
+    //     this.eventRegistryReuters = res;
+    //     console.log("Reuters - Event Registry", this.eventRegistryReuters);
+    //   });
+    // });
+    // //
     // //Return current news from Event Registry New York Times
     // this.newsAPI.getEventRegistryNYT()
     // .subscribe((res: Response) => {
@@ -497,7 +701,7 @@ console.log(__.flatten(allArrayValues));
     //   });
     // });
     //
-    // //Return current news from Event Registry Associated Press
+    //Return current news from Event Registry Associated Press
     // this.newsAPI.getEventRegistryAP()
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {
@@ -672,8 +876,8 @@ console.log(__.flatten(allArrayValues));
 }
 
 
-// goToArticle(url) {
-//   this.router.navigate(url);
+// clearArticles() {
+//   this.router.navigate();
 // }
 
 
