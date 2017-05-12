@@ -6,15 +6,13 @@
 
 <div class="container">
   <div class="row">
-  <div class="articles-container" #element>
-    <div class="article" *ngFor="let article of allMatches">
+  <div class="articles-container" *ngFor="let article of allMatches">
+    <div class="article" >
 
-    <!-- <h3>  {{ article.title }}  </h3> -->
-    <!-- <span>{{article.url}}</span> -->
 
       <div class="article-image"> <img src="{{article.image}}" alt=""> </div>
 
-<div class="title-wrapper">
+
   <div class="article-info">
     <a href="{{article.url}}"> <h3> {{ article.title }} </h3> </a>
     <div class="article-description">  {{ article.description }} </div>
@@ -24,7 +22,7 @@
     <div class="article-thumb"> <img src="{{article.thumbnail}}" alt=""> </div>
     <div class="article-source"> {{ article.source }} </div>
   </div>
-</div>
+
 
 
       </div>
