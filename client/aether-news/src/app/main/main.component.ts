@@ -1,4 +1,4 @@
-import { Component, OnInit, NgZone, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { RouterModule, Router } from "@angular/router";
 import { NewsApiService } from '../service/news-api.service';
 import { Http, Response } from '@angular/http';
@@ -16,7 +16,6 @@ import * as $ from 'jquery';
 export class MainComponent implements OnInit {
 
 
-  @ViewChild('element') articlesContainer;
 
 //EVENT REGISTRY JSONS
   private eventRegistryBBC: any = [];
@@ -55,6 +54,7 @@ export class MainComponent implements OnInit {
   private bingApiMatches: any = [];
   private eventRegistryMatchesArray: any = [];
   private allMatches: any = [];
+  private newMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
 
@@ -146,17 +146,16 @@ export class MainComponent implements OnInit {
     //Enhanced Search!  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
 
-    // if (this.allMatches.length > 0) {
-    //   this.allMatches;
-    //   console.log("woop woop!");
-    // }
-
-    this.allMatches.length = 0;
-
-    let country;
-    let allArrayValues = [];
+//First, clear previous matches to update the DOM for latest selection
+this.allMatches.length = 0;
+this.eventRegistryMatchesArray.length = 0;
+this.newsApiMatches.length = 0;
 
 
+    let allArrayValues = [];  //Stores the country keywords for later comparison
+
+
+    //If the event array contains xyz country, push the country's keywords to allArrayValues
     if (event.includes("United States")) {
       allArrayValues.push(this.americanArray);
       console.log("America!");
@@ -480,6 +479,7 @@ console.log(__.flatten(allArrayValues));
 
 
 
+
     //Combines NEWS API arrays for easier iteration
     var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
     console.log('Combined news article array', combinedArray);
@@ -513,6 +513,7 @@ console.log(__.flatten(allArrayValues));
 
     console.log("duplicate array", eventRegistryTitles);
     console.log("removed duplicates array", eventRegistryFiltered);
+
 
     const eventRegistryMatches = eventRegistryFiltered.filter(
       article => allArrayValues.every(
@@ -632,6 +633,7 @@ console.log(__.flatten(allArrayValues));
   //       console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
 
+
     //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
     console.log("All matches", this.allMatches);
@@ -647,7 +649,6 @@ console.log(__.flatten(allArrayValues));
     private http: Http,
     private router: Router,
     private newsAPI: NewsApiService,
-    private myElement: ElementRef
 
   ) { }
 
@@ -673,13 +674,13 @@ console.log(__.flatten(allArrayValues));
     // });
     // //
     // Return current news from Event Registry CNN International
-    this.newsAPI.getEventRegistryCNN()
-    .subscribe((res: Response) => {
-      this.ngZone.run(() => {
-        this.eventRegistryCNN = res;
-        console.log("CNN International - Event Registry", this.eventRegistryCNN);
-      });
-    });
+    // this.newsAPI.getEventRegistryCNN()
+    // .subscribe((res: Response) => {
+    //   this.ngZone.run(() => {
+    //     this.eventRegistryCNN = res;
+    //     console.log("CNN International - Event Registry", this.eventRegistryCNN);
+    //   });
+    // });
     //
     //Return current news from Event Registry Washington Post
     // this.newsAPI.getEventRegistryWAPO()
@@ -691,13 +692,13 @@ console.log(__.flatten(allArrayValues));
     // });
 
     // Return current news from Event Registry Reuters
-    this.newsAPI.getEventRegistryReuters()
-    .subscribe((res: Response) => {
-      this.ngZone.run(() => {
-        this.eventRegistryReuters = res;
-        console.log("Reuters - Event Registry", this.eventRegistryReuters);
-      });
-    });
+    // this.newsAPI.getEventRegistryReuters()
+    // .subscribe((res: Response) => {
+    //   this.ngZone.run(() => {
+    //     this.eventRegistryReuters = res;
+    //     console.log("Reuters - Event Registry", this.eventRegistryReuters);
+    //   });
+    // });
     //
     //Return current news from Event Registry New York Times
     // this.newsAPI.getEventRegistryNYT()
@@ -893,7 +894,7 @@ console.log(__.flatten(allArrayValues));
 
 
 // clearArticles() {
-//   this.router.navigate();
+//   this.allMatches.length = 0;
 // }
 
 
