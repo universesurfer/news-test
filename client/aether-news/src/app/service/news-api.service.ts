@@ -54,12 +54,16 @@ export class NewsApiService {
 
 //BBC
 getEventRegistryBBC(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.bbc.co.uk&sourceUri=www.bbcamerica.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
     .map((res) => {
       this.eventRegistryBBC = res.json()
       return res.json().articles.results;
     })
 }
+
+
+
+
 
 
 //Guardian
@@ -94,12 +98,14 @@ getEventRegistryWAPO(){
 
 //Reuters
 getEventRegistryReuters(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=www.reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesIncludeArticleLocation=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&articlesCount=200&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryReuters = res.json()
     return res.json().articles.results;
   })
 }
+
+
 
 
 //New York Times

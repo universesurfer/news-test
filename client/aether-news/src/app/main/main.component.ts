@@ -54,7 +54,8 @@ export class MainComponent implements OnInit {
   private bingApiMatches: any = [];
   private eventRegistryMatchesArray: any = [];
   private allMatches: any = [];
-  private newMatches: any = [];
+  private filteredMatches: any = [];
+  private doubleFilteredMatches: any = [];
 
   //COUNTRY KEYWORD ARRAYS
 
@@ -127,13 +128,49 @@ export class MainComponent implements OnInit {
   private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
   private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
   private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
+  private portugalArray: Array<string> = ["Portugal", "Lisbon", "Marcelo Rebelo de Sousa"];
   private germanyArray: Array<string> = ["Germany", "German", "Berlin", "Angela Merkel", "Merkel"];
   private italyArray: Array<string> = ["Italy", "Italy's", "Italians", "Rome", "Sergio Mattarella"];
   private netherlandsArray: Array<string> = ["Netherlands", "Dutch", "Mark Rutte", "Amsterdam"];
   private belgiumArray: Array<string> = ["Belgium", "Belgium's", "Belgian", "Brussels", "City of Brussels", "Charles Michel"];
+  private luxembourgArray: Array<string> = ["Luxembourg", "Jean-Claude Juncker", "Luxembourg City", "Luxembourg's"];
+  private switzerlandArray: Array<string> = ["Switzerland", "Swiss", "Switzerland's", "Geneva", "Bern", "Doris Leuthard"];
+  private austriaArray: Array<string> = ["Austria", "Austria's", "Austrian", "Vienna", "Salzburg", "Alexander Van der Bellen"];
+  private sloveniaArray: Array<string> = ["Slovenia", "Slovenia's", "Slovenian", "Ljubljana", "Borut Pahor"];
+  private czechRepublicArray: Array<string> = ["Czech Republic", "Czech", "Czech's", "Czech Republic's", "Prague", "Miloš Zeman"];
+  private croatiaArray: Array<string> = ["Croatia", "Croatian", "Croatia's", "Zagreb", "Kolinda Grabar-Kitarović"];
+  private bosniaHerzegovinaArray: Array<string> = ["Bosnia and Herzegovina", "Bosnian", "Bosnia's", "Sarajevo", "Mladen Ivanić"];
+  private polandArray: Array<string> = ["Poland", "Polish", "Poland's", "Warsaw", "Andrzej Duda"];
+  private slovakiaArray: Array<string> = ["Slovakia", "Slovakian", "Slovakia's", "Slovak", "Slovak's", "Bratislava", "Andrej Kiska"];
+  private hungaryArray: Array<string> = ["Hungary", "Hungarian", "Hungary's",, "Hungarians", "Hungarian's", "Budapest", "János Áder"];
+  private serbiaArray: Array<string> = ["Serbia", "Serbia's", "Serbian", "Serbians", "Serbian's", "Belgrade", "Tomislav Nikolić"];
+  private montenegroArray: Array<string> = ["Montenegro", "Podgorica", "Filip Vujanović", "Montenegro's"];
+  private kosovoArray: Array<string> = ["Kosovo", "Kosovo's", "Pristina", "Hashim Thaçi"];
+  private albaniaArray: Array<string> = ["Albania", "Albanian", "Albania's", "Albanians", "Tirana", "Bujar Nishani"];
+  private macedoniaArray: Array<string> = ["Macedonia", "Macedonia's", "Macedonian", "Macedonians", "Skopje", "Gjorge Ivanov"];
+  private greeceArray: Array<string> = ["Greece", "Greece's", "Greek", "Athens", "Greek's", "Corinth", "Thebes", "Prokopis Pavlopoulos", "Alexis Tsipras"];
+  private bulgariaArray: Array<string> = ["Bulgaria", "Bulgaria's", "Bulgarian", "Bulgarians", "Sofia", "Rumen Radev", "Ognyan Gerdzhikov"];
+  private romaniaArray: Array<string> = ["Romania", "Romanian", "Romania's", "Romanians", "Bucharest", "Klaus Iohannis", "Sorin Grindeanu"];
+  private moldovaArray: Array<string> = ["Moldova", "Moldovan", "Moldova's", "Moldovans", "Chișinău", "Igor Dodon", "Pavel Filip"];
+  private belarusArray: Array<string> = ["Belarus", "Belarussian", "Minsk"];
+  private lithuaniaArray: Array<string> = ["Lithuania", "Lithuanian", "Lithuania's", "Lithuanians", "Saulius Skvernelis", "Dalia Grybauskaitė", "Vilnius"];
+  private latviaArray: Array<string> = ["Latvia", "Latvia's", "Latvian", "Latvians", "Riga", "Raimonds Vējonis", "Māris Kučinskis"];
+  private estoniaArray: Array<string> = ["Estonia", "Estonia's", "Estonian", "Estonians", "Tallinn", "Kersti Kaljulaid"];
+  private finlandArray: Array<string> = ["Finland", "Finland's", "Finnish", "Helsinki", "Sauli Niinistö", "Juha Sipilä"];
+  private norwayArray: Array<string> = ["Norway", "Norway's", "Norwegian", "Norwegians", "Norwegian's", "Oslo", "Erna Solberg", "Harald V of Norway"];
+  private swedenArray: Array<string> = ["Sweden", "Swede's", "Sweden's", "Swedish", "Stefan Löfven", "Stockholm", "Gothenburg", "Carl XVI Gustaf of Sweden"];
+  private denmarkArray: Array<string> = ["Denmark", "Denmark's", "Danish", "Copenhagen", "Lars Løkke Rasmussen", "Margrethe II of Denmark"];
+  private icelandArray: Array<string> = ["Iceland", "Iceland's", "Reykjavik", "Guðni Th. Jóhannesson", "Bjarni Benediktsson"];
+  private greenlandArray: Array<string> = ["Greenland", "Greenland's", "Nuuk", "Kim Kielsen", "Margrethe II", "Greenlandic"];
+  private faroeIslandsArray: Array<string> = ["Faroe Islands", "Tórshavn", "Aksel V. Johannesen"];
+  private svalbardArray: Array<string> = ["Svalbard and Jan Mayen", "Svalbard", "Longyearbyen", "Spitsbergen"];
 
 
+//OCEANIA
   private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
+  private newZealandArray: Array<string> = ["New Zealand", "New Zealand's", "Kiwi", "Auckland", "Wellington", "NZ"];
+  private papuaNewGuineaArray: Array<string> = ["Papua New Guinea", "Port Moresby", "Papua New Guinean"];
+
 
 
 
@@ -397,7 +434,18 @@ this.newsApiMatches.length = 0;
 
     if (event.includes("Australia")) {
       allArrayValues.push(this.australiaArray);
-      console.log(this.australiaArray);
+      console.log("Australia");
+    }
+
+    if (event.includes("Papua New Guinea")) {
+      allArrayValues.push(this.papuaNewGuineaArray);
+      console.log("Papua New Guinea");
+    }
+
+
+    if (event.includes("New Zealand")) {
+      allArrayValues.push(this.newZealandArray);
+      console.log("New Zealand");
     }
 
     if (event.includes("France")) {
@@ -409,6 +457,12 @@ this.newsApiMatches.length = 0;
       allArrayValues.push(this.spainArray);
       console.log("Spain");
     }
+
+    if (event.includes("Portugal")) {
+      allArrayValues.push(this.portugalArray);
+      console.log("Portugal");
+    }
+
 
     if (event.includes("Germany")) {
       allArrayValues.push(this.germanyArray);
@@ -429,6 +483,178 @@ this.newsApiMatches.length = 0;
       allArrayValues.push(this.belgiumArray);
       console.log("Belgium");
     }
+
+    if (event.includes("Luxembourg")) {
+      allArrayValues.push(this.luxembourgArray);
+      console.log("Luxembourg");
+    }
+
+    if (event.includes("Switzerland")) {
+      allArrayValues.push(this.switzerlandArray);
+      console.log("Switzerland");
+    }
+
+    if (event.includes("Austria")) {
+      allArrayValues.push(this.austriaArray);
+      console.log("Austria");
+    }
+
+    if (event.includes("Slovenia")) {
+      allArrayValues.push(this.sloveniaArray);
+      console.log("Slovenia");
+    }
+
+    if (event.includes("Czech Republic")) {
+      allArrayValues.push(this.czechRepublicArray);
+      console.log("Czech Republic");
+    }
+
+    if (event.includes("Croatia")) {
+      allArrayValues.push(this.croatiaArray);
+      console.log("Croatia");
+    }
+
+    if (event.includes("Bosnia and Herzegovina")) {
+      allArrayValues.push(this.bosniaHerzegovinaArray);
+      console.log("Bosnia and Herzegovina");
+    }
+
+    if (event.includes("Poland")) {
+      allArrayValues.push(this.polandArray);
+      console.log("Poland");
+    }
+
+    if (event.includes("Slovakia")) {
+      allArrayValues.push(this.slovakiaArray);
+      console.log("Slovakia");
+    }
+
+    if (event.includes("Hungary")) {
+      allArrayValues.push(this.hungaryArray);
+      console.log("Hungary");
+    }
+
+    if (event.includes("Serbia")) {
+      allArrayValues.push(this.serbiaArray);
+      console.log("Serbia");
+    }
+
+    if (event.includes("Montenegro")) {
+      allArrayValues.push(this.montenegroArray);
+      console.log("Montenegro");
+    }
+
+    if (event.includes("Kosovo")) {
+      allArrayValues.push(this.kosovoArray);
+      console.log("Kosovo");
+    }
+
+    if (event.includes("Albania")) {
+      allArrayValues.push(this.albaniaArray);
+      console.log("Albania");
+    }
+
+    if (event.includes("Macedonia")) {
+      allArrayValues.push(this.macedoniaArray);
+      console.log("Macedonia");
+    }
+
+    if (event.includes("Greece")) {
+      allArrayValues.push(this.greeceArray);
+      console.log("Greece");
+    }
+
+    if (event.includes("Bulgaria")) {
+      allArrayValues.push(this.bulgariaArray);
+      console.log("Bulgaria");
+    }
+
+    if (event.includes("Romania")) {
+      allArrayValues.push(this.romaniaArray);
+      console.log("Romania");
+    }
+
+    if (event.includes("Moldova")) {
+      allArrayValues.push(this.moldovaArray);
+      console.log("Moldova");
+    }
+
+    if (event.includes("Macedonia")) {
+      allArrayValues.push(this.macedoniaArray);
+      console.log("Macedonia");
+    }
+
+    if (event.includes("Belarus")) {
+      allArrayValues.push(this.belarusArray);
+      console.log("Belarus");
+    }
+
+    if (event.includes("Lithuania")) {
+      allArrayValues.push(this.lithuaniaArray);
+      console.log("Lithuania");
+    }
+
+    if (event.includes("Latvia")) {
+      allArrayValues.push(this.latviaArray);
+      console.log("Latvia");
+    }
+
+    if (event.includes("Estonia")) {
+      allArrayValues.push(this.estoniaArray);
+      console.log("Estonia");
+    }
+
+    if (event.includes("Finland")) {
+      allArrayValues.push(this.finlandArray);
+      console.log("Finland");
+    }
+
+    if (event.includes("Norway")) {
+      allArrayValues.push(this.norwayArray);
+      console.log("Norway");
+    }
+
+    if (event.includes("Sweden")) {
+      allArrayValues.push(this.swedenArray);
+      console.log("Sweden");
+    }
+
+    if (event.includes("Denmark")) {
+      allArrayValues.push(this.denmarkArray);
+      console.log("Denmark");
+    }
+
+    if (event.includes("Iceland")) {
+      allArrayValues.push(this.icelandArray);
+      console.log("Iceland");
+    }
+
+    if (event.includes("Greenland")) {
+      allArrayValues.push(this.greenlandArray);
+      console.log("Greenland");
+    }
+
+    if (event.includes("Faroe Islands")) {
+      allArrayValues.push(this.faroeIslandsArray);
+      console.log("Faroe Islands");
+    }
+
+    if (event.includes("Svalbard and Jan Mayen")) {
+      allArrayValues.push(this.svalbardArray);
+      console.log("Svalbard");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
 
     if (event.includes("Syria")) {
       allArrayValues.push(this.syriaArray);
@@ -513,6 +739,10 @@ console.log(__.flatten(allArrayValues));
 
     console.log("duplicate array", eventRegistryTitles);
     console.log("removed duplicates array", eventRegistryFiltered);
+
+
+
+// => [2, 1]
 
 
     const eventRegistryMatches = eventRegistryFiltered.filter(
@@ -638,6 +868,13 @@ console.log(__.flatten(allArrayValues));
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
     console.log("All matches", this.allMatches);
 
+    this.filteredMatches = __.uniqBy(this.allMatches, 'description');
+    console.log("Lodash array with zero duplicates", this.filteredMatches);
+
+    this.doubleFilteredMatches = __.uniqBy(this.filteredMatches, 'title');
+    console.log("Lodash double filtered matches", this.doubleFilteredMatches);
+
+
 
 
 
@@ -656,13 +893,13 @@ console.log(__.flatten(allArrayValues));
 
     // Return current news from Event Registry BBC
 
-    // this.newsAPI.getEventRegistryBBC()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(()=> {
-    //     this.eventRegistryBBC = res;
-    //     console.log("BBC - The Event Registry", this.eventRegistryBBC);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryBBC()
+    .subscribe((res: Response) => {
+      this.ngZone.run(()=> {
+        this.eventRegistryBBC = res;
+        console.log("BBC - The Event Registry", this.eventRegistryBBC);
+      });
+    });
 
     //Return current news from Event Registry Guardian
     // this.newsAPI.getEventRegistryGuardian()
@@ -674,14 +911,14 @@ console.log(__.flatten(allArrayValues));
     // });
     // //
     // Return current news from Event Registry CNN International
-    // this.newsAPI.getEventRegistryCNN()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryCNN = res;
-    //     console.log("CNN International - Event Registry", this.eventRegistryCNN);
-    //   });
-    // });
-    //
+    this.newsAPI.getEventRegistryCNN()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryCNN = res;
+        console.log("CNN International - Event Registry", this.eventRegistryCNN);
+      });
+    });
+
     //Return current news from Event Registry Washington Post
     // this.newsAPI.getEventRegistryWAPO()
     // .subscribe((res: Response) => {
@@ -692,15 +929,15 @@ console.log(__.flatten(allArrayValues));
     // });
 
     // Return current news from Event Registry Reuters
-    // this.newsAPI.getEventRegistryReuters()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryReuters = res;
-    //     console.log("Reuters - Event Registry", this.eventRegistryReuters);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryReuters()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryReuters = res;
+        console.log("Reuters - Event Registry", this.eventRegistryReuters);
+      });
+    });
     //
-    //Return current news from Event Registry New York Times
+    // Return current news from Event Registry New York Times
     // this.newsAPI.getEventRegistryNYT()
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {
@@ -709,7 +946,7 @@ console.log(__.flatten(allArrayValues));
     //   });
     // });
 
-    //Return current news from Event Registry Economist
+    // Return current news from Event Registry Economist
     // this.newsAPI.getEventRegistryEconomist()
     // .subscribe((res: Response) => {
     //   this.ngZone.run(() => {
