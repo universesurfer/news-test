@@ -6,7 +6,7 @@
 
 <div class="container">
   <div class="row">
-  <div class="articles-container" *ngFor="let article of allMatches">
+  <div class="articles-container" *ngFor="let article of doubleFilteredMatches">
     <div class="article" >
 
 
@@ -22,7 +22,6 @@
     <div class="article-thumb"> <img src="{{article.thumbnail}}" alt=""> </div>
     <div class="article-source"> {{ article.source }} </div>
   </div>
-
 
 
       </div>

@@ -15,13 +15,21 @@
   /*align-self: center;*/
 }
 
+.dropdown {
+  /*position: relative;*/
+}
+
+.dropdown-menu {
+  height: 120px;
+  width: 150px;
+  position: relative;
+}
+
 .dropdown button {
-  background-color: #4446ce;
+  /*background-color: #4446ce;*/
+  background-color: black;
   color: rgb(163, 163, 179);
   border: .5px solid black;
   float: left;
   margin-top: 9px;
-
-  /*justify-content: flex-end;*/
-
 }
