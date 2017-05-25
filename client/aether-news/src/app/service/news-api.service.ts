@@ -54,7 +54,7 @@ export class NewsApiService {
 
 //BBC
 getEventRegistryBBC(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=bbc.co.uk&sourceUri=bbc.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeArticleImage=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
     .map((res) => {
       this.eventRegistryBBC = res.json()
       return res.json().articles.results;
@@ -98,7 +98,7 @@ getEventRegistryWAPO(){
 
 //Reuters
 getEventRegistryReuters(){
-  return this.http.get("http://eventregistry.org/json/article?sourceUri=reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=reuters.com&categoryUri=dmoz%2FSociety%2FPolitics&action=getArticles&articlesIncludeArticleImage=true&articlesSortBy=date&resultType=articles&articlesCount=200&articlesIncludeArticleDuplicateList=true&articlesIncludeArticleCategories=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeConceptTrendingScore=true&articlesIncludeSourceDescription=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
   .map((res) => {
     this.eventRegistryReuters = res.json()
     return res.json().articles.results;

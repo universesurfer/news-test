@@ -15,9 +15,14 @@ import * as $ from 'jquery';
 })
 export class MainComponent implements OnInit {
 
+  //IMAGES
+  private eventRegistryLogo: string = '/assets/img/er-logo-1@2x.png';
+  private amChartsLogo: string = '/assets/img/am-charts.png';
+  private newsLogo: string = '/assets/img/newsLogo.jpg';
 
 
-//EVENT REGISTRY JSONS
+
+  //EVENT REGISTRY JSONS
   private eventRegistryBBC: any = [];
   private eventRegistryGuardian: any = [];
   private eventRegistryCNN: any = [];
@@ -28,7 +33,7 @@ export class MainComponent implements OnInit {
   private eventRegistryAP: any = [];
   private eventRegistryWSJ: any = [];
 
-//NEWS API JSONS
+  //NEWS API JSONS
   private bbcJSON: any;
   private alJazeeraJSON: any;
   private bingWorldJSON: any;
@@ -60,7 +65,7 @@ export class MainComponent implements OnInit {
   //COUNTRY KEYWORD ARRAYS
 
   //NORTH AMERICA
-  private americanArray: Array<string> = ["NSA", "CIA", "FBI", "United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA"];
+  private americanArray: Array<string> = ["NSA", "CIA", "FBI", "United States", "U.S.", "US", "America", "American", "Americans", "Trump", "Trump's", "Mike Pence", "White House", "Washington", "Clinton", "Obama", "NAFTA", "Comey"];
   private canadaArray: Array<string> = ["Canada", "Canadian", "Canada's", "Canadians", "Canadian's", "Trudeau", "Justin Trudeau", "Toronto", "Columbia", "Vancouver B.C.", "Vancouver, B.C.", "NAFTA"];
   private mexicoArray: Array<string> = ["Mexico", "Mexican", "Mexicans", "Mexico's", "Mexican's", "Mexico City", "NAFTA", "Vicente Fox", "Peña Nieto"];
 
@@ -102,8 +107,7 @@ export class MainComponent implements OnInit {
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
 
 
-  //AFRICA
-  private southAfricaArray: Array<string> = ["South Africa", "South African", "South Africa's", "Jacob Zuma", "Apartheid", "Nelson Mandela", "Capetown", "Cape Town"];
+
 
   //THE MIDDLE EAST
   private pakistanArray: Array<string> = ["Pakistan", "Pakistani", "Pakistan's", "Kashmir", "Mamnoon Hussain", "Nawaz Sharif"];
@@ -116,15 +120,14 @@ export class MainComponent implements OnInit {
   private yemenArray: Array<string> = ["Yemen", "Yemen's", "Yemeni", "Sana'a", "Abdrabbuh Mansur Hadi"];
   private omanArray: Array<string> = ["Oman", "Oman's", "Muscat", "Qaboos bin Said al Said", "Sultan Qaboos"];
   private syriaArray: Array<string> = ["Syria", "Syrian", "Syrians", "Syria's", "Assad", "Bashar al Assad", "ISIS", "ISIL", "Islamic State", "Free Syrian Army"];
-  private egyptArray: Array<string> = ["Egypt", "Egyptian", "Cairo", "Egypt's", "Egyptian's", "Abdel Fattah el-Sisi"];
   private saudiArabiaArray: Array<string> = ["Saudi Arabia", "Saudi", "Saudi's", "Saudi Arabian", "Saudi Arabia's", "King Salman"];
   private turkeyArray: Array<string> = ["Turkey", "Turkish", "Turkey's", "Erdogan", "Erdogan's"];
 
 
-//EUROPE
+  //EUROPE
   private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR", "Siberia", "Siberian", "Medvedev"];
   private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
-  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish"];
+  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish", "Saint Helena", "St. Helena island"];
   private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
   private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
   private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
@@ -142,7 +145,7 @@ export class MainComponent implements OnInit {
   private bosniaHerzegovinaArray: Array<string> = ["Bosnia and Herzegovina", "Bosnian", "Bosnia's", "Sarajevo", "Mladen Ivanić"];
   private polandArray: Array<string> = ["Poland", "Polish", "Poland's", "Warsaw", "Andrzej Duda"];
   private slovakiaArray: Array<string> = ["Slovakia", "Slovakian", "Slovakia's", "Slovak", "Slovak's", "Bratislava", "Andrej Kiska"];
-  private hungaryArray: Array<string> = ["Hungary", "Hungarian", "Hungary's",, "Hungarians", "Hungarian's", "Budapest", "János Áder"];
+  private hungaryArray: Array<string> = ["Hungary", "Hungarian", "Hungary's", , "Hungarians", "Hungarian's", "Budapest", "János Áder"];
   private serbiaArray: Array<string> = ["Serbia", "Serbia's", "Serbian", "Serbians", "Serbian's", "Belgrade", "Tomislav Nikolić"];
   private montenegroArray: Array<string> = ["Montenegro", "Podgorica", "Filip Vujanović", "Montenegro's"];
   private kosovoArray: Array<string> = ["Kosovo", "Kosovo's", "Pristina", "Hashim Thaçi"];
@@ -166,7 +169,67 @@ export class MainComponent implements OnInit {
   private svalbardArray: Array<string> = ["Svalbard and Jan Mayen", "Svalbard", "Longyearbyen", "Spitsbergen"];
 
 
-//OCEANIA
+  //AFRICA
+  private moroccoArray: Array<string> = ["Morocco", "Moroccan", "Morocco's", "Moroccans", "Rabat", "Berber", "Casablanca", "Marrakesh", "Fes", "Tangier", "King Hassan II"];
+  private algeriaArray: Array<string> = ["Algeria", "Algerian", "Algeria's", "Algerians", "Oran", "Constantine", "Algiers", "Abdelaziz Bouteflika"];
+  private tunisiaArray: Array<string> = ["Tunisia", "Tunisian", "Tunisia's", "Tunisians", "Tunis", "Sfax", "Sousse", "Kairouan", "Carthage", "Beji Caid Essebsi"];
+  private libyaArray: Array<string> = ["Libya", "Libyan", "Libya's", "Libyans", "Tripoli", "Benghazi", "Khoms", "Muammar Gaddafi", "Fayez al-Sarraj", "Magariaf"];
+  private egyptArray: Array<string> = ["Egypt", "Egyptian", "Cairo", "Egypt's", "Egyptian's", "Abdel Fattah el-Sisi"];
+  private westernSaharaArray: Array<string> = ["Western Sahara", "Western Sahara's", "Western Sahara's", "Western Saharans", "Cape Bojador", "Bir Gandus", "Lemseid", "Haouza", "Umm Dreiga", "El-Aaiún"];
+  private mauritaniaArray: Array<string> = ["Mauritania", "Mauritania's", "Mauritanian", "Mauritanians", "Nouakchott", "Nouadhibou", "Ould Abdel Aziz", "Yahya Ould Hademine"];
+  private maliArray: Array<string> = ["Mali", "Mali's", "Malian", "Republic of Mali", "Malians", "Bamako", "Ibrahim Boubacar Keïta", "Timbuktu", "Djenné"];
+  private nigerArray: Array<string> = ["Niger", "Niger's", "Republic of Niger", "Niamey", "Mahamadou Issoufou"];
+  private chadArray: Array<string> = ["Chad", "Chad's", "N'Djamena", "Idriss Déby"];
+  private sudanArray: Array<string> = ["Sudan", "Sudan's", "Sudanese", "Khartoum", "Omar al-Bashir", "Port Sudan"];
+  private senegalArray: Array<string> = ["Senegal", "Senegal's", "Senegalese", "Dakar", "Touba", "Macky Sall"];
+  private gambiaArray: Array<string> = ["Gambia", "Gambia's", "Gambian", "Gambians", "Banjul", "Adama Barrow"];
+  private guineaBassauArray: Array<string> = ["Guinea-Bissau", "Guinea-Bissau's", "Guinea Bissau", "Bissau", "José Mário Vaz"];
+  private guineaArray: Array<string> = ["Guinea", "Conakry", "Alpha Condé", "Guinean"];
+  private sierraLeoneArray: Array<string> = ["Sierra Leone", "Sierra Leone's", "Freetown", "Ernest Bai Koroma", "Makeni", "Koidu"];
+  private liberiaArray: Array<string> = ["Liberia", "Liberian", "Liberians", "Liberia's", "Monrovia", "Ellen Johnson Sirleaf"];
+  private ivoryCoastArray: Array<string> = ["Côte d’Ivoire", "Ivory Coast", "Yamoussoukro", "Alassane Ouattara"];
+  private burkinaFasoArray: Array<string> = ["Ouagadougou", "Burkina Faso", "Roch Marc Christian Kaboré"];
+  private ghanaArray: Array<string> = ["Ghana", "Accra", "Nana Akufo-Addo", "Kumasi"];
+  private togoArray: Array<string> = ["Togo", "Lomé", "Faure Gnassingbé", "Koutammakou", "Lake Togo"];
+  private beninArray: Array<string> = ["Benin", "Porto-Novo", "Patrice Talon", "Pendjari National Park", "Cotonou"];
+  private nigeriaArray: Array<string> = ["Nigeria", "Abuja", "Muhammadu Buhari", "Lagos", "Abuja", "Calabar", "Zuma Rock"];
+  private cameroonArray: Array<string> = ["Cameroon", "Yaoundé", "Paul Biya", "Douala", "Yaoundé"];
+  private centralAfricanRepublicArray: Array<string> = ["Central African Republic", "Bangui", "Faustin-Archange Touadéra"];
+  private southSudanArray: Array<string> = ["South Sudan", "South Sudanese", "South Sudan's", "Juba", "Salva Kiir Mayardit"];
+  private ethiopiaArray: Array<string> = ["Ethiopia", "Ethiopian", "Ethiopia's", "Ethiopians", "Addis Ababa", "Mulatu Teshome", "Lalibela", "Tedros", "Lake Turkana", "Simien Mountains"];
+  private eritreaArray: Array<string> = ["Eritrea", "Eritrea's", "Eritrean", "Eritreans", "Asmara", "Isaias Afwerki", "Massawa", "Keren"];
+  private somaliaArray: Array<string> = ["Somalia", "Somalian", "Somalia's", "Somalians", "Mogadishu", "Mohamed Abdullahi Mohamed", "Somali", "Al-Shabaab", "al-Shabaab", "al-shabaab"];
+  private equatorialGuineaArray: Array<string> = ["Teodoro Obiang Nguema Mbasogo", "Malabo", "Oyala", "Corisco"];
+  private gabonArray: Array<string> = ["Gabon", "Gabon's", "Libreville", "Ali Bongo Ondimba", "Lopé National Park"];
+  private republicOfCongoArray: Array<string> = ["Republic of Congo", "Brazzaville", "Denis Sassou Nguesso", "Livingstone Falls", "Dzanga-Sangha Special Reserve"];
+  private democraticRepublicOfCongoArray: Array<string> = ["Democratic Republic of Congo", "Joseph Kabila", "Kinshasa"];
+  private ugandaArray: Array<string> = ["Uganda", "Uganda's", "Ugandan", "Ugandans", "Kampala", "Yoweri Museveni", "Rwenzori Mountains", "Lake Victoria", "Bwindi Impenetrable National Park", "Ssese Islands"];
+  private kenyaArray: Array<string> = ["Kenya", "Kenya's", "Kenyans", "Nairobi", "Maasai Mara", "Amboseli National Park", "Lake Nakuru", "Uhuru Kenyatta", "Great Rift Valley"];
+  private angolaArray: Array<string> = ["Angola", "Angola's", "Angolan", "Angolans", "Luanda", "José Eduardo dos Santos"];
+  private rwandaArray: Array<string> = ["Rwanda", "Rwanda's", "Rwandan", "Rwandans", "Kigali", "Paul Kagame", "Volcanoes National Park", "Mt. Karisimbi", "Nyungwe National Park"];
+  private burundiArray: Array<string> = ["Burundi", "Burundi's", "Pierre Nkurunziza", "Bujumbura", "Lake Tanganyika", "Rusizi National Park", "Kibira National Park"];
+  private tanzaniaArray: Array<string> = ["Tanzania", "Tanzania's", "Tanzanian", "Tanzanians", "Dodoma", "John Magufuli", "Mount Kilimanjaro", "Mt. Kilimanjaro", "Ngorongoro Conservation Area", "Serengeti National Park", "Olduvai Gorge", "Lake Victoria", "Lake Nyasa"];
+  private zambiaArray: Array<string> = ["Zambia", "Zambia's", "Zambian", "Zambians", "Edgar Lungu", "Victoria Falls", "Lusaka", "Kariba Dam", "Lake Kariba", "Mosi-oa-Tunya"];
+  private malawiArray: Array<string> = ["Malawi", "Malawi's", "Malawian", "Malawians", "Lilongwe", "Peter Mutharika", "Lake Malawi", "Lake Malawi National Park", "Lake Chilwa", "Liwonde National Park", "Cape Maclear"];
+  private namibiaArray: Array<string> = ["Namibia", "Namibia's", "Namibians", "Windhoek", "Hage Geingob", "Etosha National Park", "Sossusvlei", "Spitzoppe", "Twyfelfontein", "Daan Viljoen Game Reserve"];
+  private botswanaArray: Array<string> = ["Botswana", "Botswana's", "Botswanan", "Gaborone", "Ian Khama", "Okavango Delta", "Chobe National Park", "Tsodilo", "Central Kalahari Game Reserve", "Kalahari Desert"];
+  private zimbabweArray: Array<string> = ["Zimbabwe", "Zimbabwe's", "Zimbabwean", "Zimbabweans", "Robert Mugabe", "Harare", "Matusadona", "Mana Pools", "Hwange National Park", "Matobo National Park"];
+  private mozambiqueArray: Array<string> = ["Mozambique", "Mozambique's", "Maputo", "Tofo", "Quirimbas Archipelago", "Ibo Island", "Bazaruto Archipelago"];
+  private southAfricaArray: Array<string> = ["South Africa", "South Africans", "South Africa's", "Nelson Mandela", "Apartheid", "apartheid", "Cape Town", "Pretoria", "Jacob Zuma", "Capetown", "Kruger National Park", "Table Mountain", "Robben Island", "Bloemfontein", "Afrikaans"];
+  private lesothoArray: Array<string> = ["Lesotho", "Lesotho's", "Lesothans", "Letsie III of Lesotho", "Maseru", "Mount Qiloane", "Malealea", "Drakensberg", "Thaba Bosiu"];
+  private swazilandArray: Array<string> = ["Swaziland", "Swaziland's", "Swazi", "Mbabane", "Lobamba", "Mswati III", "Mlilwane Wildlife Sanctuary", "Hlane Royal National Park", "Mlawula Nature Reserve", "Mbuluzi Game Reserve"];
+  private madagascarArray: Array<string> = ["Madagascar", "Madagascar's", "Antananarivo", "Hery Rajaonarimampianina", "Ranomafana National Park", "Isalo National Park", "Ankarafantsika National Park", "Parc Ivoloina", "Avenue of the Baobabs", "Ambohimanga"];
+  private comorosArray: Array<string> = ["Comoros", "Moroni", "Grande Comore", "Ngazidja", "Mt. Karthala", "Mount Karthala", "Ancienne Mosquée du Vendredi", "Moheli Marine Park", "Bouenindi"];
+  private reunionArray: Array<string> = ["Réunion", "Piton de la Fournaise", "Piton des Neiges", "Saint-Denis"];
+  private mauritiusArray: Array<string> = ["Mauritius", "Mauritian", "Mauritians", "Black River Gorges National Park", "Port Louis", "Ameenah Gurib", "Île aux Cerfs", ""];
+  private saoTomeArray: Array<string> = ["Sao Tome and Principe", "São Tomé and Príncipe", "Sao Tome and Príncipe", "Sao Tome", "São Tomé", "Lagoa Azul lagoon", "Ôbo Natural Park", "Pico Cão Grande"];
+  private capeVerdeArray: Array<string> = ["Cape Verde", "Cape Verde's", "Praia", "Forte Real de São Felipe", "Pico do Fogo", "Buracona"];
+
+
+
+
+
+  //OCEANIA
   private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
   private newZealandArray: Array<string> = ["New Zealand", "New Zealand's", "Kiwi", "Auckland", "Wellington", "NZ"];
   private papuaNewGuineaArray: Array<string> = ["Papua New Guinea", "Port Moresby", "Papua New Guinean"];
@@ -174,19 +237,17 @@ export class MainComponent implements OnInit {
 
 
 
-  private somaliaArray: Array<string> = ["Somalia", "Somalia's", "Somalian", "Somalians", "Al-Shabaab", "al-Shabaab", "al-shabaab", "Mohamed Abdullahi Mohamed", "Mogadishu"];
-
 
 
   share(event) {
 
-    //Enhanced Search!  If a selected country is in the 'event' array, push words relevant to that country to
+    //Enhanced Search.  If a selected country is in the 'event' array, push words relevant to that country to
     //array that we will compare to API JSON title/description keywords
 
-//First, clear previous matches to update the DOM for latest selection
-this.allMatches.length = 0;
-this.eventRegistryMatchesArray.length = 0;
-this.newsApiMatches.length = 0;
+    //Clear previous matches to update the DOM for latest selection
+    this.allMatches.length = 0;
+    this.eventRegistryMatchesArray.length = 0;
+    this.newsApiMatches.length = 0;
 
 
     let allArrayValues = [];  //Stores the country keywords for later comparison
@@ -288,7 +349,7 @@ this.newsApiMatches.length = 0;
       console.log("Ukraine");
     }
 
-//ASIA
+    //ASIA
     if (event.includes("China")) {
       allArrayValues.push(this.chinaArray);
       console.log("China");
@@ -402,17 +463,17 @@ this.newsApiMatches.length = 0;
       console.log("Oman");
     }
 
-    if(event.includes("North Korea")) {
+    if (event.includes("North Korea")) {
       allArrayValues.push(this.northKoreaArray);
       console.log("North Korea");
     }
 
-    if(event.includes("South Korea")) {
+    if (event.includes("South Korea")) {
       allArrayValues.push(this.southKoreaArray);
       console.log("South Korea");
     }
 
-    if(event.includes("Japan")) {
+    if (event.includes("Japan")) {
       allArrayValues.push(this.japanArray);
       console.log("Japan");
     }
@@ -647,15 +708,6 @@ this.newsApiMatches.length = 0;
 
 
 
-
-
-
-
-
-
-
-
-
     if (event.includes("Syria")) {
       allArrayValues.push(this.syriaArray);
       console.log("Syria");
@@ -677,27 +729,247 @@ this.newsApiMatches.length = 0;
     }
 
 
+//AFRICA
+
     if (event.includes("Somalia")) {
       allArrayValues.push(this.somaliaArray);
       console.log("Somalia!");
     }
 
+    if (event.includes("Morocco")) {
+      allArrayValues.push(this.moroccoArray);
+    }
 
-//   switch (event.includes(country) ) {
-//       case country === "United States":
-//       console.log("Murica!");
-//       // allArrays.push(this.americanArray);
-//       // console.log(this.americanArray);
-//
-//       case country === "Russia":
-//       console.log("Ruskis!");
-//       // allArrays.push(this.russiaArray);
-//       // console.log(this.russiaArray);
-//                       //Omitting the 'break' lets the switch statement continue to run through code
-//
-// }
+    if (event.includes("Algeria")) {
+      allArrayValues.push(this.algeriaArray);
+    }
 
-console.log(__.flatten(allArrayValues));
+    if (event.includes("Tunisia")) {
+      allArrayValues.push(this.tunisiaArray);
+    }
+
+    if (event.includes("Libya")) {
+      allArrayValues.push(this.libyaArray);
+    }
+
+    if (event.includes("Egypt")) {
+      allArrayValues.push(this.egyptArray);
+    }
+
+    if (event.includes("Western Sahara")) {
+      allArrayValues.push(this.westernSaharaArray);
+    }
+
+    if (event.includes("Mauritania")) {
+      allArrayValues.push(this.mauritaniaArray);
+    }
+
+    if (event.includes("Mali")) {
+      allArrayValues.push(this.maliArray);
+    }
+
+    if (event.includes("Niger")) {
+      allArrayValues.push(this.nigerArray);
+    }
+
+    if (event.includes("Chad")) {
+      allArrayValues.push(this.chadArray);
+    }
+
+    if (event.includes("Sudan")) {
+      allArrayValues.push(this.sudanArray);
+    }
+
+    if (event.includes("Senegal")) {
+      allArrayValues.push(this.senegalArray);
+    }
+
+    if (event.includes("Gambia")) {
+      allArrayValues.push(this.gambiaArray);
+    }
+
+    if (event.includes("Guinea Bassau")) {
+      allArrayValues.push(this.guineaBassauArray);
+    }
+
+    if (event.includes("Guinea")) {
+      allArrayValues.push(this.guineaArray);
+    }
+
+    if (event.includes("Sierra Leone")) {
+      allArrayValues.push(this.sierraLeoneArray);
+    }
+
+    if (event.includes("Liberia")) {
+      allArrayValues.push(this.liberiaArray);
+    }
+
+    if (event.includes("Côte d’Ivoire")) {
+      allArrayValues.push(this.ivoryCoastArray);
+    }
+
+    if (event.includes("Burkina Faso")) {
+      allArrayValues.push(this.burkinaFasoArray);
+    }
+
+    if (event.includes("Ghana")) {
+      allArrayValues.push(this.ghanaArray);
+    }
+
+    if (event.includes("Togo")) {
+      allArrayValues.push(this.togoArray);
+    }
+
+    if (event.includes("Benin")) {
+      allArrayValues.push(this.beninArray);
+    }
+
+    if (event.includes("Nigeria")) {
+      allArrayValues.push(this.nigeriaArray);
+    }
+
+    if (event.includes("Cameroon")) {
+      allArrayValues.push(this.cameroonArray);
+    }
+
+    if (event.includes("Central African Republic")) {
+      allArrayValues.push(this.centralAfricanRepublicArray);
+    }
+
+    if (event.includes("South Sudan")) {
+      allArrayValues.push(this.southSudanArray);
+    }
+
+    if (event.includes("Ethiopia")) {
+      allArrayValues.push(this.ethiopiaArray);
+    }
+
+    if (event.includes("Eritrea")) {
+      allArrayValues.push(this.eritreaArray);
+    }
+
+    if (event.includes("Somalia")) {
+      allArrayValues.push(this.somaliaArray);
+    }
+
+    if (event.includes("Equatorial Guinea")) {
+      allArrayValues.push(this.equatorialGuineaArray);
+    }
+
+    if (event.includes("Gabon")) {
+      allArrayValues.push(this.gabonArray);
+    }
+
+    if (event.includes("Republic of Congo")) {
+      allArrayValues.push(this.republicOfCongoArray);
+    }
+
+    if (event.includes("Democratic Republic of Congo")) {
+      allArrayValues.push(this.democraticRepublicOfCongoArray);
+    }
+
+    if (event.includes("Uganda")) {
+      allArrayValues.push(this.ugandaArray);
+    }
+
+    if (event.includes("Kenya")) {
+      allArrayValues.push(this.kenyaArray);
+    }
+
+    if (event.includes("Angola")) {
+      allArrayValues.push(this.angolaArray);
+    }
+
+    if (event.includes("Rwanda")) {
+      allArrayValues.push(this.rwandaArray);
+    }
+
+    if (event.includes("Burundi")) {
+      allArrayValues.push(this.burundiArray);
+    }
+
+    if (event.includes("Tanzania")) {
+      allArrayValues.push(this.tanzaniaArray);
+    }
+
+    if (event.includes("Zambia")) {
+      allArrayValues.push(this.zambiaArray);
+    }
+
+    if (event.includes("Malawi")) {
+      allArrayValues.push(this.malawiArray);
+    }
+
+    if (event.includes("Namibia")) {
+      allArrayValues.push(this.namibiaArray);
+    }
+
+    if (event.includes("Botswana")) {
+      allArrayValues.push(this.botswanaArray);
+    }
+
+    if (event.includes("Zimbabwe")) {
+      allArrayValues.push(this.zimbabweArray);
+    }
+
+    if (event.includes("Mozambique")) {
+      allArrayValues.push(this.mozambiqueArray);
+    }
+
+    if (event.includes("South Africa")) {
+      allArrayValues.push(this.southAfricaArray);
+    }
+
+    if (event.includes("Lesotho")) {
+      allArrayValues.push(this.lesothoArray);
+    }
+
+    if (event.includes("Swaziland")) {
+      allArrayValues.push(this.swazilandArray);
+    }
+
+    if (event.includes("Madagascar")) {
+      allArrayValues.push(this.madagascarArray);
+    }
+
+    if (event.includes("Comoros")) {
+      allArrayValues.push(this.comorosArray);
+    }
+
+    if (event.includes("Reunion")) {
+      allArrayValues.push(this.reunionArray);
+    }
+
+    if (event.includes("Mauritius")) {
+      allArrayValues.push(this.mauritiusArray);
+    }
+
+    if (event.includes("Sao Tome and Principe")) {
+      allArrayValues.push(this.saoTomeArray);
+    }
+
+    if (event.includes("Cape Verde")) {
+      allArrayValues.push(this.capeVerdeArray);
+    }
+
+
+
+
+    //   switch (event.includes(country) ) {
+    //       case country === "United States":
+    //       console.log("Murica!");
+    //       // allArrays.push(this.americanArray);
+    //       // console.log(this.americanArray);
+    //
+    //       case country === "Russia":
+    //       console.log("Ruskis!");
+    //       // allArrays.push(this.russiaArray);
+    //       // console.log(this.russiaArray);
+    //                       //Omitting the 'break' lets the switch statement continue to run through code
+    //
+    // }
+
+    console.log(__.flatten(allArrayValues));
 
 
 
@@ -718,8 +990,8 @@ console.log(__.flatten(allArrayValues));
     //SEARCHING EventRegistry NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     let eventRegistryTitles = _.map(combinedEventRegistry, 'title');
     console.log("Seeing if ER title mapping works", eventRegistryTitles);
-    let eventRegistryResult = event.map(function(word){
-      return eventRegistryTitles.filter(function(article){
+    let eventRegistryResult = event.map(function(word) {
+      return eventRegistryTitles.filter(function(article) {
         return article.toString().indexOf(word) > -1;
       });
     });
@@ -733,7 +1005,7 @@ console.log(__.flatten(allArrayValues));
 
     //Remove duplicate titles
     var eventRegistryFiltered = eventRegistryTitles.filter(function(elem, index, self) {
-    return index == self.indexOf(elem);
+      return index == self.indexOf(elem);
     })
 
 
@@ -742,18 +1014,18 @@ console.log(__.flatten(allArrayValues));
 
 
 
-// => [2, 1]
+    // => [2, 1]
 
 
     const eventRegistryMatches = eventRegistryFiltered.filter(
       article => allArrayValues.every(
-          words => words.find(
-              word => article.toString().includes(word)
-          )
+        words => words.find(
+          word => article.toString().includes(word)
+        )
       )
-  );
+    );
 
-  console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
+    console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
 
 
     //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
@@ -770,30 +1042,30 @@ console.log(__.flatten(allArrayValues));
     // console.log(result);
     // console.log(event);
     //
-    // let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
+    let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
     //
     //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     // let bingArray = _.pick(_.find('description', 'title', 'url'));
-    // let bingArray = _.map(combinedBing, 'description');
-    // let bingResult =  event.map(function(word){
-    // 	return bingArray.filter(function(article){
-    //     // console.log(article);
-    //   	return article.toString().indexOf(word) > -1;
-    //   });
-    // });
+    let bingArray = _.map(combinedBing, 'description');
+    let bingResult = event.map(function(word) {
+      return bingArray.filter(function(article) {
+        // console.log(article);
+        return article.toString().indexOf(word) > -1;
+      });
+    });
 
     // console.log(bingResult);
     //
     // //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
     //
     //Bing Api
-    // const bingMatches = bingArray.filter(
-    //     article => allArrayValues.every(
-    //         words => words.find(
-    //             word => article.toString().includes(word)
-    //         )
-    //     )
-    // );
+    const bingMatches = bingArray.filter(
+      article => allArrayValues.every(
+        words => words.find(
+          word => article.toString().includes(word)
+        )
+      )
+    );
 
     // console.log('articles with mentioning at least 2 countries:');
     // console.log(bingMatches);
@@ -802,70 +1074,70 @@ console.log(__.flatten(allArrayValues));
     var newArray = _.map(combinedArray, 'title');
     console.log("Combined News API descriptions", newArray);
     const newsApiMatches = newArray.filter(
-        article => allArrayValues.every(
-            words => words.find(
-                word => article.toString().includes(word)
-            )
+      article => allArrayValues.every(
+        words => words.find(
+          word => article.toString().includes(word)
         )
+      )
     );
 
     // Combine Articles of News API and Bing
-    // var allNews = newArray.concat(bingArray);
+    var allNews = newArray.concat(bingArray);
     // console.log('Combined NEWS API and BING titles/descriptions', allNews);
 
 
     // console.log('articles with mentioning at least 2 countries from News API:');
     // console.log(newsApiMatches);
 
-    // const combinedMatches = bingMatches.concat(newsApiMatches);
-    // console.log("Combined Matches from Bing and News Api: ", combinedMatches);
+    const combinedMatches = bingMatches.concat(newsApiMatches);
+    console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
 
     for (let article of combinedEventRegistry) {
       for (let match of eventRegistryMatches) {
         if (article.title == match) {
-        var eventRegistryObject = {title: article.title, description: article.body, url: article.url, image: article.image, source: article.source.title, thumbnail: article.source.details.thumbImage };
-        //Push article objects to global array
-        this.eventRegistryMatchesArray.push(eventRegistryObject);
+          var eventRegistryObject = { title: article.title, description: article.body, url: article.url, image: article.image, source: article.source.title, thumbnail: article.source.details.thumbImage, date: article.date };
+          //Push article objects to global array
+          this.eventRegistryMatchesArray.push(eventRegistryObject);
 
-        console.log("Article url: ", article.url, 'Article title: ', article.title);
+          console.log("Article url: ", article.url, 'Article title: ', article.title);
+        }
       }
     }
-  }
-        console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
+    console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
 
-  //   for (let article of combinedArray) {
-  //     for (let match of combinedMatches) {
-  //       if (article.title == match) {
-  //       var articleObject = {title: article.title, description: article.description, url: article.url, image: article.urlToImage};
-  //       //Push article objects to global array
-  //       this.newsApiMatches.push(articleObject);
-  //       console.log("Article url: ", article.url, 'Article title: ', article.title);
-  //     }
-  //   }
-  // }
-  //       console.log("Seeing if articles are pushing", this.newsApiMatches);
+    for (let article of combinedArray) {
+      for (let match of combinedMatches) {
+        if (article.title == match) {
+          var articleObject = { title: article.title, description: article.description, url: article.url, image: article.urlToImage, date: article.publishedAt };
+          //Push article objects to global array
+          this.newsApiMatches.push(articleObject);
+          console.log("Article url: ", article.url, 'Article title: ', article.title);
+        }
+      }
+    }
+    console.log("Seeing if articles are pushing", this.newsApiMatches);
 
 
-  //
-  //
-  //   for (let article of combinedBing) {
-  //     for (let match of combinedMatches) {
-  //       if (article.description == match) {
-  //         var bingArticleObject = {title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name};
-  //         //Push article objects to global array
-  //         this.bingApiMatches.push(bingArticleObject);
-  //         console.log("Article url: ", article.url, "Article description: ", article.description);
-  //       }
-  //     }
-  //
-  //   }
-  //       console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
+
+    for (let article of combinedBing) {
+      for (let match of combinedMatches) {
+        if (article.description == match) {
+          var bingArticleObject = { title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name, date: article.datePublished };
+          //Push article objects to global array
+          this.bingApiMatches.push(bingArticleObject);
+          console.log("Article url: ", article.url, "Article description: ", article.description);
+        }
+      }
+
+    }
+    console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
 
 
     //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
+    console.log("NEWS API MATCHES", this.newsApiMatches);
     console.log("All matches", this.allMatches);
 
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
@@ -878,7 +1150,7 @@ console.log(__.flatten(allArrayValues));
 
 
 
-}
+  }
 
 
   constructor(
@@ -894,246 +1166,239 @@ console.log(__.flatten(allArrayValues));
     // Return current news from Event Registry BBC
 
     this.newsAPI.getEventRegistryBBC()
-    .subscribe((res: Response) => {
-      this.ngZone.run(()=> {
-        this.eventRegistryBBC = res;
-        console.log("BBC - The Event Registry", this.eventRegistryBBC);
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.eventRegistryBBC = res;
+          console.log("BBC - The Event Registry", this.eventRegistryBBC);
+        });
       });
-    });
 
     //Return current news from Event Registry Guardian
-    // this.newsAPI.getEventRegistryGuardian()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryGuardian = res;
-    //     console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
-    //   });
-    // });
-    // //
-    // Return current news from Event Registry CNN International
-    this.newsAPI.getEventRegistryCNN()
+    this.newsAPI.getEventRegistryGuardian()
     .subscribe((res: Response) => {
       this.ngZone.run(() => {
-        this.eventRegistryCNN = res;
-        console.log("CNN International - Event Registry", this.eventRegistryCNN);
+        this.eventRegistryGuardian = res;
+        console.log("The Guardian - Event Registry", this.eventRegistryGuardian);
       });
     });
+    //
+    // Return current news from Event Registry CNN International
+    this.newsAPI.getEventRegistryCNN()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.eventRegistryCNN = res;
+          console.log("CNN International - Event Registry", this.eventRegistryCNN);
+        });
+      });
 
     //Return current news from Event Registry Washington Post
-    // this.newsAPI.getEventRegistryWAPO()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryWAPO = res;
-    //     console.log("Washington Post - Event Registry", this.eventRegistryWAPO);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryWAPO()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryWAPO = res;
+        console.log("Washington Post - Event Registry", this.eventRegistryWAPO);
+      });
+    });
 
     // Return current news from Event Registry Reuters
     this.newsAPI.getEventRegistryReuters()
-    .subscribe((res: Response) => {
-      this.ngZone.run(() => {
-        this.eventRegistryReuters = res;
-        console.log("Reuters - Event Registry", this.eventRegistryReuters);
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.eventRegistryReuters = res;
+          console.log("Reuters - Event Registry", this.eventRegistryReuters);
+        });
       });
-    });
     //
     // Return current news from Event Registry New York Times
-    // this.newsAPI.getEventRegistryNYT()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryNYT = res;
-    //     console.log("NYT - Event Registry", this.eventRegistryNYT);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryNYT()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryNYT = res;
+        console.log("NYT - Event Registry", this.eventRegistryNYT);
+      });
+    });
 
     // Return current news from Event Registry Economist
-    // this.newsAPI.getEventRegistryEconomist()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryEconomist = res;
-    //     console.log("Economist - Event Registry", this.eventRegistryEconomist);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryEconomist()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryEconomist = res;
+        console.log("Economist - Event Registry", this.eventRegistryEconomist);
+      });
+    });
 
     // Return current news from Event Registry Associated Press
-    // this.newsAPI.getEventRegistryAP()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryAP = res;
-    //     console.log("Associated Press - Event Registry", this.eventRegistryAP);
-    //   });
-    // });
+    this.newsAPI.getEventRegistryAP()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.eventRegistryAP = res;
+          console.log("Associated Press - Event Registry", this.eventRegistryAP);
+        });
+      });
 
     // //Return current news from Event Registry Wall Street Journal
-    // this.newsAPI.getEventRegistryWSJ()
-    // .subscribe((res: Response) => {
-    //   this.ngZone.run(() => {
-    //     this.eventRegistryWSJ = res;
-    //     console.log("Wall Street Journal - Event Registry", this.eventRegistryWSJ);
-    //   });
-    // });
-    //
+    this.newsAPI.getEventRegistryWSJ()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryWSJ = res;
+        console.log("Wall Street Journal - Event Registry", this.eventRegistryWSJ);
+      });
+    });
+
 
 
 
     //Get the top 10 Headlines for BBC
     this.newsAPI.getBBC()
-    .subscribe((res: Response) =>  {
-      this.ngZone.run(()=>{
-        this.bbcJSON = res;
-        console.log('BBC', this.bbcJSON.articles);  //show top 10 articles from BBC Json
-    });
-  });
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.bbcJSON = res;
+          console.log('BBC', this.bbcJSON.articles);  //show top 10 articles from BBC Json
+        });
+      });
 
-  //Get the top 10 Headlines for Associated Press
+    //Get the top 10 Headlines for Associated Press
     this.newsAPI.getAP()
-    .subscribe((res: Response) =>  {
-      this.ngZone.run(()=>{
-        this.apJSON = res;
-        console.log('Associated Press', this.apJSON.articles);  //show top 10 articles from Associated Press
-    });
-    });
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.apJSON = res;
+          console.log('Associated Press', this.apJSON.articles);  //show top 10 articles from Associated Press
+        });
+      });
 
     //Get the top 10 Headlines for Google News
     this.newsAPI.getGoogle()
-    .subscribe((res: Response) =>  {
-      this.ngZone.run(()=>{
-        this.googleJSON = res;
-        console.log('Google News', this.googleJSON.articles);  //show top 10 articles from Google News
-    });
-  });
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.googleJSON = res;
+          console.log('Google News', this.googleJSON.articles);  //show top 10 articles from Google News
+        });
+      });
 
-  //Get the top 10 Headlines for the Economist
-      this.newsAPI.getEconomist()
-      .subscribe((res: Response) =>  {
-        this.ngZone.run(()=>{
+    //Get the top 10 Headlines for the Economist
+    this.newsAPI.getEconomist()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
           this.economistJSON = res;
           console.log('Economist', this.economistJSON.articles);  //show top 10 articles from Economist
+        });
       });
-    });
 
     //Get the top 10 Headlines for the New York Times
-        this.newsAPI.getNYT()
-        .subscribe((res: Response) =>  {
-          this.ngZone.run(()=>{
-            this.nytJSON = res;
-            console.log('The New York Times', this.nytJSON.articles);  //show top 10 articles from NYT
+    this.newsAPI.getNYT()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.nytJSON = res;
+          console.log('The New York Times', this.nytJSON.articles);  //show top 10 articles from NYT
         });
       });
 
-      //Get the top 10 Headlines for The Washington Post
-          this.newsAPI.getWAPO()
-          .subscribe((res: Response) =>  {
-            this.ngZone.run(()=>{
-              this.wapoJSON = res;
-              console.log('Washington Post', this.wapoJSON.articles);  //show top 10 articles from WAPO
-          });
+    //Get the top 10 Headlines for The Washington Post
+    this.newsAPI.getWAPO()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.wapoJSON = res;
+          console.log('Washington Post', this.wapoJSON.articles);  //show top 10 articles from WAPO
         });
+      });
 
-        //Get the top 10 Headlines for CNN
-            this.newsAPI.getCNN()
-            .subscribe((res: Response) =>  {
-              this.ngZone.run(()=>{
-                this.cnnJSON = res;
-                console.log('CNN', this.cnnJSON.articles);  //show top 10 articles from CNN
-            });
-          });
+    //Get the top 10 Headlines for CNN
+    this.newsAPI.getCNN()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.cnnJSON = res;
+          console.log('CNN', this.cnnJSON.articles);  //show top 10 articles from CNN
+        });
+      });
 
-  //Get the top 10 Headlines for Newsweek
-      this.newsAPI.getNEWSWEEK()
-      .subscribe((res: Response) =>  {
-        this.ngZone.run(()=>{
+    //Get the top 10 Headlines for Newsweek
+    this.newsAPI.getNEWSWEEK()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
           this.newsweekJSON = res;
           console.log('Newsweek', this.newsweekJSON.articles);  //show top 10 articles from Newsweek
+        });
       });
-    });
 
 
-  //Get the top 10 Headlines for Reuters
-      this.newsAPI.getREUTERS()
-      .subscribe((res: Response) =>  {
-        this.ngZone.run(()=>{
+    //Get the top 10 Headlines for Reuters
+    this.newsAPI.getREUTERS()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
           this.reutersJSON = res;
           console.log('Reuters', this.reutersJSON.articles);  //show top 10 articles from Reuters
+        });
       });
-    });
 
     //Get the top 10 Headlines for The Guardian UK
     this.newsAPI.getGuardianUK()
-    .subscribe((res: Response) =>  {
-      this.ngZone.run(()=>{
-        this.guardianUkJSON = res;
-        console.log('Guardian UK', this.guardianUkJSON.articles);  //show top 10 articles from GuardianUK
-  });
-});
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.guardianUkJSON = res;
+          console.log('Guardian UK', this.guardianUkJSON.articles);  //show top 10 articles from GuardianUK
+        });
+      });
 
-  //Get the top 10 Headlines for The Guardian AU
-  this.newsAPI.getGuardianAU()
-  .subscribe((res: Response) =>  {
-    this.ngZone.run(()=>{
-      this.guardianAuJSON = res;
-      console.log('Guardian AU', this.guardianAuJSON.articles);  //show top 10 articles from GuardianAU
-  });
-  });
+    //Get the top 10 Headlines for The Guardian AU
+    this.newsAPI.getGuardianAU()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.guardianAuJSON = res;
+          console.log('Guardian AU', this.guardianAuJSON.articles);  //show top 10 articles from GuardianAU
+        });
+      });
 
-  //Get the top 10 Headlines for HuffPost
-  this.newsAPI.getHuffPost()
-  .subscribe((res: Response) =>  {
-    this.ngZone.run(()=>{
-      this.huffPostJSON = res;
-      console.log('Huffington Post', this.huffPostJSON.articles);  //show top 10 articles from HuffPost
-  });
-  });
+    //Get the top 10 Headlines for HuffPost
+    this.newsAPI.getHuffPost()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.huffPostJSON = res;
+          console.log('Huffington Post', this.huffPostJSON.articles);  //show top 10 articles from HuffPost
+        });
+      });
 
-  //Get the top 10 Headlines for Wall Street Journal
-  this.newsAPI.getWSJ()
-  .subscribe((res: Response) =>  {
-    this.ngZone.run(()=>{
-      this.wsjJSON = res;
-      console.log('Wall Street Journal', this.wsjJSON.articles);  //show top 10 articles from HuffPost
-  });
-  });
+    //Get the top 10 Headlines for Wall Street Journal
+    this.newsAPI.getWSJ()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
+          this.wsjJSON = res;
+          console.log('Wall Street Journal', this.wsjJSON.articles);  //show top 10 articles from HuffPost
+        });
+      });
 
-      //Get the top 10 Headlines for Al Jazeera
-      this.newsAPI.getAlJazeera()
-      .subscribe((res: Response) =>  {
-        this.ngZone.run(()=>{
+    //Get the top 10 Headlines for Al Jazeera
+    this.newsAPI.getAlJazeera()
+      .subscribe((res: Response) => {
+        this.ngZone.run(() => {
           this.alJazeeraJSON = res;
           console.log('Al Jazeera', this.alJazeeraJSON.articles);  //show top 10 articles from Al Jazeera
-    });
-  });
+        });
+      });
 
 
 
-    //Get World News from Bing News Search
+    // Get World News from Bing News Search
     this.newsAPI.getBingWorldNews()
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
-        this.bingWorldJSON = res;
-        console.log('Bing World News', this.bingWorldJSON.value);
+          this.bingWorldJSON = res;
+          console.log('Bing World News', this.bingWorldJSON.value);
+        });
       });
-    });
 
     //Get Politics News from Bing News Search
     this.newsAPI.getBingPoliticsNews()
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
-        this.bingPoliticsJSON = res;
-        console.log('Bing Politics News', this.bingPoliticsJSON.value);
+          this.bingPoliticsJSON = res;
+          console.log('Bing Politics News', this.bingPoliticsJSON.value);
+        });
       });
-    });
 
 
 
 
-
-}
-
-
-// clearArticles() {
-//   this.allMatches.length = 0;
-// }
-
+  }
 
 
 
