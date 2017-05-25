@@ -2,7 +2,7 @@ import { Component, OnInit, Output, ViewChild, EventEmitter } from '@angular/cor
 import { Router, RouterModule, ActivatedRoute } from '@angular/router';
 import { AmChartsService } from "amcharts3-angular2";
 
-declare var AmCharts : any; //we must declare our AmCharts variable, like Google
+declare var AmCharts: any; //we must declare our AmCharts variable, like Google
 
 @Component({
   selector: 'app-map',
@@ -16,19 +16,16 @@ export class MapComponent implements OnInit {
   @Output() shareCountries = new EventEmitter();
 
 
-  // @Output() selectedCountries: EventEmitter<string> = new EventEmitter<string>();
-  // @Output() selectedCountries: EventEmitter<any>;
-
   selectedCountries: any;
   map: any;
 
-  fireShareEvent(event) {
+
+  fireShareEvent(event) {    //Share selected countries with main.component.ts
     this.shareCountries.emit(this.selectedCountries);
-    // console.log(this.selectedCountries);
   }
 
 
-  constructor(){
+  constructor() {
   }
 
 
@@ -36,71 +33,71 @@ export class MapComponent implements OnInit {
 
 
     this.map = AmCharts.makeChart("mapdiv", {
-           type: "map",
-           theme: "dark",
-           projection: "Eckert 5",
-           panEventsEnabled: true,
-           backgroundColor: "#535364",
-           backgroundAlpha: 1,
-           zoomControl: {
-               zoomControlEnabled: true
-           },
-           dataProvider: {
-               map: "worldHigh",
-               getAreasFromMap: true,
-               areas:
-               []
-           },
-           areasSettings: {
-               autoZoom: false,
-               selectable: true,
-               color: "#B4B4B7",
-               colorSolid: "#84ADE9",
-               selectedColor: "#84ADE9",
-               outlineColor: "#666666",
-               rollOverColor: "#9EC2F7",
-               rollOverOutlineColor: "#000000"
-           },
-           listeners: [{
-               "event": "clickMapObject",
-               "method": (e) => {
+      type: "map",
+      theme: "dark",
+      projection: "Eckert 5",
+      panEventsEnabled: true,
+      backgroundColor: "white",
+      backgroundAlpha: 1,
+      zoomControl: {
+        zoomControlEnabled: true
+      },
+      dataProvider: {
+        map: "worldHigh",
+        getAreasFromMap: true,
+        areas:
+        []
+      },
+      areasSettings: {
+        autoZoom: false,
+        selectable: true,
+        color: "#6277A7",
+        colorSolid: "#84ADE9",
+        selectedColor: "#6164ce",
+        outlineColor: "#666666",
+        rollOverColor: "#9EC2F7",
+        rollOverOutlineColor: "#000000"
+      },
+      listeners: [{
+        "event": "clickMapObject",
+        "method": (e) => {
 
-                   // Ignore any click not on area
-                   if (e.mapObject.objectType !== "MapArea")
-                       return;
+          // Ignore any click not on area
+          if (e.mapObject.objectType !== "MapArea")
+            return;
 
-                   var area = e.mapObject;
+          var area = e.mapObject;
 
-                   // Toggle showAsSelected
-                   area.showAsSelected = !area.showAsSelected;
-                   e.chart.returnInitialColor(area);
+          // Toggle showAsSelected
+          area.showAsSelected = !area.showAsSelected;
+          e.chart.returnInitialColor(area);
 
-                   // Update the list
-                   let result = this.getSelectedCountries(this.map);
-                   document.getElementById("selected").innerHTML = JSON.stringify(result );
-                   this.selectedCountries = result;
+          // Update the list
+          let result = this.getSelectedCountries(this.map);
+          document.getElementById("selected").innerHTML = JSON.stringify(result);
+          this.selectedCountries = result;
 
-               }
-           }]
-       });
-
-       /**
-    * Function which extracts currently selected country list.
-    * Returns array of country names
-    */
+        }
+      }]
+    });
 
 
-   }
 
-   getSelectedCountries(map: any) {
-           var selected = [];
-           for (var i = 0; i < map.dataProvider.areas.length; i++) {
-               if (map.dataProvider.areas[i].showAsSelected)
-                   selected.push(map.dataProvider.areas[i].enTitle);
-           }
-          // console.log(this.selectedCountries);
-           return selected;
-       }
+  }
+
+  /**
+* Function which extracts currently selected country list.
+* Returns array of country names
+*/
+
+  getSelectedCountries(map: any) {
+    var selected = [];
+    for (var i = 0; i < map.dataProvider.areas.length; i++) {
+      if (map.dataProvider.areas[i].showAsSelected)
+        selected.push(map.dataProvider.areas[i].enTitle);
+    }
+    return selected;
+  }
 
 
 

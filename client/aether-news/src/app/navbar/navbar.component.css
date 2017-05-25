@@ -16,13 +16,17 @@
 }
 
 .dropdown {
-  /*position: relative;*/
+  position: relative;
+  display: inline-block;
 }
 
 .dropdown-menu {
-  height: 120px;
-  width: 150px;
-  position: relative;
+  height: 180px;
+  width: 160px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  margin: auto;
 }
 
 .dropdown button {

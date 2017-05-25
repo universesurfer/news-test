@@ -30,7 +30,8 @@
 
 .search-button {
   width: 100%;
-  /*height: 100px;*/
   margin-top: -20px;
   background-color: rgb(97, 100, 206);
+  border-bottom: solid black 3px;
+  border-top: solid black 3px;
 }
