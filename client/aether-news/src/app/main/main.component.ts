@@ -32,6 +32,7 @@ export class MainComponent implements OnInit {
   private eventRegistryEconomist: any = [];
   private eventRegistryAP: any = [];
   private eventRegistryWSJ: any = [];
+  private eventRegistryNewswire: any = [];
 
   //NEWS API JSONS
   private bbcJSON: any;
@@ -85,11 +86,51 @@ export class MainComponent implements OnInit {
   private frenchGuianaArray: Array<string> = ["French Guiana", "French Guianan", "Guiana", "Rodolphe Alexandre"];
 
 
+//CARIBBEAN AND CENTRAL AMERICA
+  private haitiArray: Array<string> = ["Haiti", "Haitian", "Haitians", "Haitian's", "Haiti's", "Port-au-Prince", "Labadee", "Jacamel", "Jovenel Moïse"];
+  private dominicanRepublicArray: Array<string> = ["Dominican Republic", "Dominican", "Dominicans", "Dominican's", "Dominican Republic's", "Santo Domingo", "Danilo Medina", "Punta Cano", "Bávaro"];
+  private puertoRicoArray: Array<string> = ["Puerto Rico", "Puerto Rican", "Puerto Rico's", "Puerto Ricans", "San Juan", "El Yunque National Forest"];
+  private bahamasArray: Array<string> = ["Bahamas", "Bahamian", "Bahamian", "Bahamians", "Nassau", "Andros Barrier Reef"];
+  private jamaicaArray: Array<string> = ["Jamaica", "Jamaica's", "Jamaicans", "Jamaican's", "Kingston", "Dunn's River Falls", "Montego Bay", "Negril", "Ocho Rios"];
   private cubaArray: Array<string> = ["Cuba", "Cuban", "Cuba's", "Cuban's", "Fidel Castro", "Raul Castro", "Che Guevara"];
+  private guatemalaArray: Array<string> = ["Guatemala", "Guatemala's", "Guatemalan", "Guatemalans", "Guatemalan's", "Guatemala City", "Tikal", "Lake Atitlán", "Semuc Champey"];
+  private belizeArray: Array<string> = ["Belize", "Belize's", "Belizean", "Belmopan", "Ambergris Caye", "Xunantunich", "Placencia", "Great Blue Hole"];
+  private elSalvadorArray: Array<string> = ["El Salvador", "El Salvador's", "El Salvadorian", "El Salvadorians", "San Salvador", "Salvador Sánchez Cerén", "Coatepeque Caldera", "Teopán Island", "Tazumal"];
+  private hondurasArray: Array<string> = ["Honduras", "Honduran", "Hondurans", "Honduran's", "Tegucigalpa", "Juan Orlando Hernández", "Roatán"];
+  private nicaraguaArray: Array<string> = ["Nicaragua", "Nicaraguan", "Nicaraguans", "Nicaraguan's", "Nicaragua's", "Managua", "Daniel Ortega", "Corn Islands", "Apoyo Lagoon Natural Reserve"];
+  private costaRicaArray: Array<string> = ["Costa Rica", "Costa Rican", "Costa Ricans", "Costa Rica's", "Costa Rican's", "San José", "Arenal Volcano", "Corcovado National Park", "Manuel Antonio National Park", "Monteverde Cloud Forest Reserve", "Tortuguero National Park"];
+  private panamaArray: Array<string> = ["Panama", "Panama's", "Panamanian", "Panamanians", "Panamanian's", "Panama City", "Panama Canal", "Panamá Viejo", "Juan Carlos Varela"];
+
+
+  //OCEANIA
+  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
+  private newZealandArray: Array<string> = ["New Zealand", "New Zealand's", "Kiwi", "Auckland", "Wellington", "NZ"];
+  private papuaNewGuineaArray: Array<string> = ["Papua New Guinea", "Port Moresby", "Papua New Guinean"];
+
+  private kiribatiArray: Array<string> = ["Kiribati", "South Tarawa", "Butaritari", "Taneti Mamau"];
+  private frenchPolynesiaArray: Array<string> = ["French Polynesia", "French Polynesian", "French Polynesia's", "French Polynesians", "Papeete", "Bora Bora", "Pā'ōfa'i Gardens", "Tahiti", "Mo'orea", "Papeete", "Rangiroa"];
+  private guamArray: Array<string> = ["Guam", "Guam's", "Guamian", "Umatac", "Fort Nuestra Señora de la Soledad"];
+  private micronesiaArray: Array<string> = ["Federated States of Micronesia", "Micronesia", "Micronesian", "Micronesia's", "Micronesians", "Palikir", "Nan Madol", "Pakin Atoll", "Peter M. Christian"];
+  private palauArray: Array<string> = ["Palau", "Palauan", "Palau's", "Ngerulmud", "Tommy Remengesau"];
+  private solomonIslandsArray: Array<string> = ["Solomon Islands", "Guadalcanal", "Honiara"];
+  private vanuatuArray: Array<string> = ["Vanuatu", "Vanuatuan", "Vanuatu's", "Port Vila", "Efate", "Melanesian"];
+  private fijiArray: Array<string> = ["Fiji", "Fijian", "Fiji's", "Fijians", "Suva", "Viti Levu", "Vanua Levu"];
+  private samoaArray: Array<string> = ["Samoa", "Samoan", "Samoa's", "Samoans", "Apia", "Savai'i"];
+  private tongaArray: Array<string> = ["Tonga", "Tongan", "Tonga's", "Tongans", "Nukuʻalofa", "Tupou VI"];
+  private niueArray: Array<string> = ["Niue", "Niue's", "Alofi"];
+  private newCaledoniaArray: Array<string> = ["New Caledonia", "New Caledonian", "New Caledonians", "New Caledonia's", "Nouméa"];
+  private frenchSouthernArray: Array<string> = ["French Southern and Antarctic Islands"];
+  private heardIslandArray: Array<string> = ["Heard Island and McDonald Islands", "Mawson Peak"];
+  private southSandwichArray: Array<string> = ["South Georgia and South Sandwich Islands"];
+  private bouvetIslandArray: Array<string> = ["Bouvet Island"];
+  private falklandIslandsArray: Array<string> = ["Falkland Islands", "East Falkland", "Falklands"];
+  private cookIslandsArray: Array<string> = ["Cook Islands", "Avarua", "Cook Islanders"];
+
+
 
 
   //ASIA
-  private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping"];
+  private chinaArray: Array<string> = ["China", "Chinese", "China's", "Beijing", "Xi Jinping", "Tibet", "Tibetan", "Tibet's", "Tibetans", "Dalai Lama", "Lhasa", "Yangtze", "Yellow River", "Uyghurs", "Hui"];
   private taiwanArray: Array<string> = ["Taiwan", "Taiwanese", "Tsai Ing-wen"];
   private northKoreaArray: Array<string> = ["North Korea", "North Korean", "Pyongyang", "Kim Jong Un", "Kim Jong-Un", "North Koreans"];
   private southKoreaArray: Array<string> = ["South Korea", "South Korean", "Seoul"];
@@ -105,7 +146,17 @@ export class MainComponent implements OnInit {
   private mongoliaArray: Array<string> = ["Mongolia", "Mongolian", "Mongolia's", "Ulaanbaatar", "Gobi", "Tsakhiagiin Elbegdorj"];
   private nepalArray: Array<string> = ["Nepal", "Nepali", "Nepal's", "Nepalese", "Kathmandu", "Everest", "Bidhya Devi Bhandari"];
   private indiaArray: Array<string> = ["India", "Indian", "India's", "New Delhi", "Mumbai", "Narendra Modi", "Kashmir"];
+  private sriLankaArray: Array<string> = ["Sri Lanka", "Sri Lankan", "Sri Lanka's", "Sri Lankans", "Ceylon", "Sri Jayawardenepura Kotte", "Sri Jayawardenepura Kotte", "Anuradhapura", "Sigiriya"];
+  private bangladeshArray: Array<string> = ["Bangladesh", "Bangladeshi", "Bangladeshi's", "Bangladeshis", "Dhaka", "Abdul Hamid", "Sundarbans", "Royal Bengal Tiger", "Bengal Tiger", "Sundarbans", "Sylhet"];
 
+  private georgiaArray: Array<string> = ["Georgia", "Republic of Georgia", "Tbilisi", "Giorgi Margvelashvili", "Batumi", "Svaneti", "Borjomi", "Narikala"];
+  private armeniaArray: Array<string> = ["Armenia", "Armenian", "Armenia's", "Armenians", "Yerevan", "Mount Ararat", "Mt. Ararat", "Etchmiadzin Cathedral", "Geghard", "Lake Sevan", "Khor Virap", "Tatev monastery", "Tsaghkadzor"];
+  private azerbaijanArray: Array<string> = ["Azerbaijan", "Azerbaijani", "Azerbaijan's", "Palace of the Shirvanshahs", "Baku", "Quba", "Qabala", "Ilham Aliyev", "Maiden Tower"];
+  private turkmenistanArray: Array<string> = ["Turkmenistan", "Turkmenistan's", "Turkmenistani", "Karakum Desert", "Ashgabat", "Gurbanguly Berdimuhamedow", "Derweze", "Awaza"];
+  private uzbekistanArray: Array<string> = ["Uzbekistan", "Uzbekistan's", "Uzbekistani", "Uzbekistani's", "Tashkent", "Shavkat Mirziyoyev", "Registan"];
+  private tajikistanArray: Array<string> = ["Tajikistan", "Tajikistani", "Tajikistan's", "Tajikistanis", "Dushanbe", "Iskanderkulsky Nature Refuge", "Fann Mountains", "Khujand", "Khorugh", "Karakul"];
+  private kyrgyzstanArray: Array<string> = ["Kyrgyzstan", "Kyrgyzstan's", "Kyrgyzstani", "Kyrgyzstanis", "Bishkek", "Almazbek Atambayev", "Tash Rabat", "Issyk-Kul"];
+  private kazakhstanArray: Array<string> = ["Kazakhstan", "Kazakhstan's", "Kazakhstani", "Kazakh", "Kazakgstanis", "Astana", "Nursultan Nazarbayev", "Almaty", "Astana", "Atyrau", "Bayterek Tower"];
 
 
 
@@ -127,7 +178,7 @@ export class MainComponent implements OnInit {
   //EUROPE
   private russiaArray: Array<string> = ["Russia", "Russia's", "Moscow", "Vladimir Putin", "Vladimir Putin's", "Putin", "Putin's", "Russian", "Soviet Union", "Soviet", "U.S.S.R.", "USSR", "Siberia", "Siberian", "Medvedev"];
   private ukraineArray: Array<string> = ["Ukraine", "Ukrainian", "Ukraine's", "Ukrainians", "Kiev", "Crimea"];
-  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish", "Saint Helena", "St. Helena island"];
+  private ukArray: Array<string> = ["United Kingdom", "UK", "Britain", "Brits", "Briton", "Britons", "Briton's", "British", "Britain's", "England's", "UK's", "U.K.'s", "U.K.", "England", "Queen Elizabeth", "Tony Blair", "Theresa May", "Brexit", "Scotland", "Scottish", "Scots", "Northern Ireland", "Northern Irish", "Saint Helena", "St. Helena island", "Cayman Islands"];
   private irelandArray: Array<string> = ["Ireland", "Ireland's", "Irish", "Dublin", "Michael D Higgins", "Enda Kenny"];
   private franceArray: Array<string> = ["France", "France's", "French", "Marine Le Pen", "Le Pen", "Emmanuel Macron", "Macron", "Paris"];
   private spainArray: Array<string> = ["Spain", "Spanish", "Spaniard", "Spaniard's", "Catalonia", "Catalunya", "Madrid", "Barcelona"];
@@ -167,6 +218,9 @@ export class MainComponent implements OnInit {
   private greenlandArray: Array<string> = ["Greenland", "Greenland's", "Nuuk", "Kim Kielsen", "Margrethe II", "Greenlandic"];
   private faroeIslandsArray: Array<string> = ["Faroe Islands", "Tórshavn", "Aksel V. Johannesen"];
   private svalbardArray: Array<string> = ["Svalbard and Jan Mayen", "Svalbard", "Longyearbyen", "Spitsbergen"];
+
+
+
 
 
   //AFRICA
@@ -229,12 +283,6 @@ export class MainComponent implements OnInit {
 
 
 
-  //OCEANIA
-  private australiaArray: Array<string> = ["Australia", "Australia's", "Australian", "Australians", "Aussie", "Malcolm Turnbull", "Tony Abbott"];
-  private newZealandArray: Array<string> = ["New Zealand", "New Zealand's", "Kiwi", "Auckland", "Wellington", "NZ"];
-  private papuaNewGuineaArray: Array<string> = ["Papua New Guinea", "Port Moresby", "Papua New Guinean"];
-
-
 
 
 
@@ -250,10 +298,10 @@ export class MainComponent implements OnInit {
     this.newsApiMatches.length = 0;
 
 
-    let allArrayValues = [];  //Stores the country keywords for later comparison
+    let allArrayValues = [];  //Stores the country keywords for later mapping
 
 
-    //If the event array contains xyz country, push the country's keywords to allArrayValues
+    //If the event array contains a country, push the country's keywords to allArrayValues
     if (event.includes("United States")) {
       allArrayValues.push(this.americanArray);
       console.log("America!");
@@ -339,6 +387,55 @@ export class MainComponent implements OnInit {
       console.log("Cuba!");
     }
 
+
+    if (event.includes("Haiti")) {
+      allArrayValues.push(this.haitiArray);
+    }
+
+    if (event.includes("Dominican Republic")) {
+      allArrayValues.push(this.dominicanRepublicArray);
+    }
+
+    if (event.includes("Puerto Rico")) {
+      allArrayValues.push(this.puertoRicoArray);
+    }
+
+    if (event.includes("Bahamas")) {
+      allArrayValues.push(this.bahamasArray);
+    }
+
+    if (event.includes("Jamaica")) {
+      allArrayValues.push(this.jamaicaArray);
+    }
+
+    if (event.includes("Guatemala")) {
+      allArrayValues.push(this.guatemalaArray);
+    }
+
+    if (event.includes("Belize")) {
+      allArrayValues.push(this.belizeArray);
+    }
+
+    if (event.includes("El Salvador")) {
+      allArrayValues.push(this.elSalvadorArray);
+    }
+
+    if (event.includes("Honduras")) {
+      allArrayValues.push(this.hondurasArray);
+    }
+
+    if (event.includes("Nicaragua")) {
+      allArrayValues.push(this.nicaraguaArray);
+    }
+
+    if (event.includes("Costa Rica")) {
+      allArrayValues.push(this.costaRicaArray);
+    }
+
+    if (event.includes("Panama")) {
+      allArrayValues.push(this.panamaArray);
+    }
+
     if (event.includes("Russia")) {
       allArrayValues.push(this.russiaArray);
       console.log("Ruskis!");
@@ -348,6 +445,9 @@ export class MainComponent implements OnInit {
       allArrayValues.push(this.ukraineArray);
       console.log("Ukraine");
     }
+
+
+
 
     //ASIA
     if (event.includes("China")) {
@@ -409,6 +509,15 @@ export class MainComponent implements OnInit {
       allArrayValues.push(this.indiaArray);
       console.log("India");
     }
+
+    if (event.includes("Sri Lanka")) {
+      allArrayValues.push(this.sriLankaArray);
+    }
+
+    if (event.includes("Bangladesh")) {
+      allArrayValues.push(this.bangladeshArray);
+    }
+
 
 
     //AFRICA
@@ -483,6 +592,42 @@ export class MainComponent implements OnInit {
       console.log("Philippines!");
     }
 
+
+    if (event.includes("Georgia")) {
+      allArrayValues.push(this.georgiaArray);
+    }
+
+    if (event.includes("Armenia")) {
+      allArrayValues.push(this.armeniaArray);
+    }
+
+    if (event.includes("Azerbaijan")) {
+      allArrayValues.push(this.azerbaijanArray);
+    }
+
+    if (event.includes("Turkmenistan")) {
+      allArrayValues.push(this.turkmenistanArray);
+    }
+
+    if (event.includes("Uzbekistan")) {
+      allArrayValues.push(this.uzbekistanArray);
+    }
+
+    if (event.includes("Tajikistan")) {
+      allArrayValues.push(this.tajikistanArray);
+    }
+
+    if (event.includes("Kyrgyzstan")) {
+      allArrayValues.push(this.kyrgyzstanArray);
+    }
+
+    if (event.includes("Kazakhstan")) {
+      allArrayValues.push(this.kazakhstanArray);
+    }
+
+
+
+
     if (event.includes("United Kingdom")) {
       allArrayValues.push(this.ukArray);
       console.log("United Kingdom!");
@@ -508,6 +653,76 @@ export class MainComponent implements OnInit {
       allArrayValues.push(this.newZealandArray);
       console.log("New Zealand");
     }
+
+    if (event.includes("Kiribati")) {
+      allArrayValues.push(this.kiribatiArray);
+    }
+
+    if (event.includes("French Polynesia")) {
+      allArrayValues.push(this.frenchPolynesiaArray);
+    }
+
+    if (event.includes("Guam")) {
+      allArrayValues.push(this.guamArray);
+    }
+
+    if (event.includes("Palau")) {
+      allArrayValues.push(this.palauArray);
+    }
+
+    if (event.includes("Solomon Islands")) {
+      allArrayValues.push(this.solomonIslandsArray);
+    }
+
+    if (event.includes("Vanuatu")) {
+      allArrayValues.push(this.vanuatuArray);
+    }
+
+    if (event.includes("Fiji")) {
+      allArrayValues.push(this.fijiArray);
+    }
+
+    if (event.includes("Samoa")) {
+      allArrayValues.push(this.samoaArray);
+    }
+
+    if (event.includes("Tonga")) {
+      allArrayValues.push(this.tongaArray);
+    }
+
+    if (event.includes("Niue")) {
+      allArrayValues.push(this.niueArray);
+    }
+
+    if (event.includes("New Caledonia")) {
+      allArrayValues.push(this.newCaledoniaArray);
+    }
+
+    if (event.includes("French Southern and Antarctic Islands")) {
+      allArrayValues.push(this.frenchSouthernArray);
+    }
+
+    if (event.includes("Heard Island and Mcdonald Islands")) {
+      allArrayValues.push(this.heardIslandArray);
+    }
+
+    if (event.includes("South Georgia and South Sandwich Islands")) {
+      allArrayValues.push(this.southSandwichArray);
+    }
+
+    if (event.includes("Bouvet Islands")) {
+      allArrayValues.push(this.bouvetIslandArray);
+    }
+
+    if (event.includes("Falkland Islands")) {
+      allArrayValues.push(this.falklandIslandsArray);
+    }
+
+    if (event.includes("Cook Islands")) {
+      allArrayValues.push(this.cookIslandsArray);
+    }
+
+
 
     if (event.includes("France")) {
       allArrayValues.push(this.franceArray);
@@ -706,8 +921,6 @@ export class MainComponent implements OnInit {
     }
 
 
-
-
     if (event.includes("Syria")) {
       allArrayValues.push(this.syriaArray);
       console.log("Syria");
@@ -725,7 +938,6 @@ export class MainComponent implements OnInit {
 
     if (event.includes("Turkey")) {
       allArrayValues.push(this.turkeyArray);
-      console.log("Turkey");
     }
 
 
@@ -733,7 +945,6 @@ export class MainComponent implements OnInit {
 
     if (event.includes("Somalia")) {
       allArrayValues.push(this.somaliaArray);
-      console.log("Somalia!");
     }
 
     if (event.includes("Morocco")) {
@@ -955,41 +1166,18 @@ export class MainComponent implements OnInit {
 
 
 
-    //   switch (event.includes(country) ) {
-    //       case country === "United States":
-    //       console.log("Murica!");
-    //       // allArrays.push(this.americanArray);
-    //       // console.log(this.americanArray);
-    //
-    //       case country === "Russia":
-    //       console.log("Ruskis!");
-    //       // allArrays.push(this.russiaArray);
-    //       // console.log(this.russiaArray);
-    //                       //Omitting the 'break' lets the switch statement continue to run through code
-    //
-    // }
-
-    console.log(__.flatten(allArrayValues));
-
-
-
-
-
-
-
-
-    //Combines NEWS API arrays for easier iteration
+    //Combines NEWS API arrays for easier iteration/mapping
     var combinedArray = this.bbcJSON.articles.concat(this.alJazeeraJSON.articles, this.apJSON.articles, this.googleJSON.articles, this.economistJSON.articles, this.nytJSON.articles, this.wapoJSON.articles, this.cnnJSON.articles, this.newsweekJSON.articles, this.reutersJSON.articles, this.guardianUkJSON.articles, this.guardianAuJSON.articles, this.huffPostJSON.articles, this.wsjJSON.articles);
-    console.log('Combined news article array', combinedArray);
+    // console.log('Combined news article array', combinedArray);
 
 
-    var combinedEventRegistry = this.eventRegistryBBC.concat(this.eventRegistryGuardian, this.eventRegistryCNN, this.eventRegistryWAPO, this.eventRegistryReuters, this.eventRegistryNYT, this.eventRegistryEconomist, this.eventRegistryAP, this.eventRegistryWSJ);
-    console.log("Combined Event Registry Articles Array", combinedEventRegistry);
+    var combinedEventRegistry = this.eventRegistryBBC.concat(this.eventRegistryGuardian, this.eventRegistryNewswire, this.eventRegistryCNN, this.eventRegistryWAPO, this.eventRegistryReuters, this.eventRegistryNYT, this.eventRegistryEconomist, this.eventRegistryAP, this.eventRegistryWSJ);
+    // console.log("Combined Event Registry Articles Array", combinedEventRegistry);
 
 
     //SEARCHING EventRegistry NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     let eventRegistryTitles = _.map(combinedEventRegistry, 'title');
-    console.log("Seeing if ER title mapping works", eventRegistryTitles);
+    // console.log("Seeing if ER title mapping works", eventRegistryTitles);
     let eventRegistryResult = event.map(function(word) {
       return eventRegistryTitles.filter(function(article) {
         return article.toString().indexOf(word) > -1;
@@ -997,7 +1185,7 @@ export class MainComponent implements OnInit {
     });
 
 
-    console.log("Mapped Event Registry Result", eventRegistryResult);
+    // console.log("Mapped Event Registry Result", eventRegistryResult);
 
 
     //Event Registry Api
@@ -1008,13 +1196,8 @@ export class MainComponent implements OnInit {
       return index == self.indexOf(elem);
     })
 
-
-    console.log("duplicate array", eventRegistryTitles);
-    console.log("removed duplicates array", eventRegistryFiltered);
-
-
-
-    // => [2, 1]
+    // console.log("duplicate array", eventRegistryTitles);
+    // console.log("removed duplicates array", eventRegistryFiltered);
 
 
     const eventRegistryMatches = eventRegistryFiltered.filter(
@@ -1025,7 +1208,7 @@ export class MainComponent implements OnInit {
       )
     );
 
-    console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
+    // console.log("Articles mentioning at least two countries from EventRegistry JSON", eventRegistryMatches);
 
 
     //Iterating over the ARTICLE TITLES to see if they have country name from selected countries
@@ -1038,12 +1221,10 @@ export class MainComponent implements OnInit {
     //   });
     // });
 
-
-    // console.log(result);
-    // console.log(event);
-    //
     let combinedBing = this.bingWorldJSON.value.concat(this.bingPoliticsJSON.value);
-    //
+
+
+
     //SEARCHING BING NEWS DESCRIPTIONS FOR SELECTED COUNTRY KEYWORD, RETURN RESULT
     // let bingArray = _.pick(_.find('description', 'title', 'url'));
     let bingArray = _.map(combinedBing, 'description');
@@ -1054,11 +1235,9 @@ export class MainComponent implements OnInit {
       });
     });
 
-    // console.log(bingResult);
-    //
-    // //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
-    //
+
     //Bing Api
+    // //RETURNS ARTICLES MENTIONING AT LEAST 2 COUNTRIES, USING THEIR SEMANTICALLY EQUIVALENT KEYWORDS
     const bingMatches = bingArray.filter(
       article => allArrayValues.every(
         words => words.find(
@@ -1067,12 +1246,10 @@ export class MainComponent implements OnInit {
       )
     );
 
-    // console.log('articles with mentioning at least 2 countries:');
-    // console.log(bingMatches);
-    // //
+
     //News Api
     var newArray = _.map(combinedArray, 'title');
-    console.log("Combined News API descriptions", newArray);
+    // console.log("Combined News API descriptions", newArray);
     const newsApiMatches = newArray.filter(
       article => allArrayValues.every(
         words => words.find(
@@ -1090,7 +1267,7 @@ export class MainComponent implements OnInit {
     // console.log(newsApiMatches);
 
     const combinedMatches = bingMatches.concat(newsApiMatches);
-    console.log("Combined Matches from Bing and News Api: ", combinedMatches);
+    // console.log("Combined Matches from Bing and News Api: ", combinedMatches);
 
 
     for (let article of combinedEventRegistry) {
@@ -1100,11 +1277,11 @@ export class MainComponent implements OnInit {
           //Push article objects to global array
           this.eventRegistryMatchesArray.push(eventRegistryObject);
 
-          console.log("Article url: ", article.url, 'Article title: ', article.title);
+          // console.log("Article url: ", article.url, 'Article title: ', article.title);
         }
       }
     }
-    console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
+    // console.log("Seeing if ER articles are pushing", this.eventRegistryMatchesArray);
 
     for (let article of combinedArray) {
       for (let match of combinedMatches) {
@@ -1116,7 +1293,7 @@ export class MainComponent implements OnInit {
         }
       }
     }
-    console.log("Seeing if articles are pushing", this.newsApiMatches);
+    // console.log("Seeing if articles are pushing", this.newsApiMatches);
 
 
 
@@ -1126,31 +1303,30 @@ export class MainComponent implements OnInit {
           var bingArticleObject = { title: article.name, description: article.description, url: article.url, image: article.image.thumbnail.contentUrl, source: article.provider[0].name, date: article.datePublished };
           //Push article objects to global array
           this.bingApiMatches.push(bingArticleObject);
-          console.log("Article url: ", article.url, "Article description: ", article.description);
+          // console.log("Article url: ", article.url, "Article description: ", article.description);
         }
       }
 
     }
-    console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
+    // console.log("Seeing if Bing matches are pushing", this.bingApiMatches);
 
 
 
     //COMBINE ALL MATCHED ARTICLES, FROM ALL APIS
     this.allMatches = this.eventRegistryMatchesArray.concat(this.newsApiMatches);
-    console.log("NEWS API MATCHES", this.newsApiMatches);
-    console.log("All matches", this.allMatches);
+    // console.log("NEWS API MATCHES", this.newsApiMatches);
+    // console.log("All matches", this.allMatches);
 
     this.filteredMatches = __.uniqBy(this.allMatches, 'description');
-    console.log("Lodash array with zero duplicates", this.filteredMatches);
+    // console.log("Lodash array with zero duplicates", this.filteredMatches);
 
     this.doubleFilteredMatches = __.uniqBy(this.filteredMatches, 'title');
-    console.log("Lodash double filtered matches", this.doubleFilteredMatches);
-
-
+    // console.log("Lodash double filtered matches", this.doubleFilteredMatches);
 
 
 
   }
+
 
 
   constructor(
@@ -1161,10 +1337,13 @@ export class MainComponent implements OnInit {
 
   ) { }
 
+
+
   ngOnInit() {
 
-    // Return current news from Event Registry BBC
+    //NEWS APIS
 
+    // Return current news from Event Registry BBC
     this.newsAPI.getEventRegistryBBC()
       .subscribe((res: Response) => {
         this.ngZone.run(() => {
@@ -1172,6 +1351,16 @@ export class MainComponent implements OnInit {
           console.log("BBC - The Event Registry", this.eventRegistryBBC);
         });
       });
+
+      // Return current news from Event Registry PR Newswire
+    this.newsAPI.getEventRegistryNewswire()
+    .subscribe((res: Response) => {
+      this.ngZone.run(() => {
+        this.eventRegistryNewswire = res;
+        console.log("PR Newswire - The Event Registry", this.eventRegistryNewswire);
+      });
+    });
+
 
     //Return current news from Event Registry Guardian
     this.newsAPI.getEventRegistryGuardian()

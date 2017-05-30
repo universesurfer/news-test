@@ -33,6 +33,7 @@ export class NewsApiService {
   public eventRegistryEconomist: any;
   public eventRegistryAP: any;
   public eventRegistryWSJ: any;
+  public eventRegistryNewswire: any;
 
   constructor(
     private http: Http,
@@ -61,8 +62,14 @@ getEventRegistryBBC(){
     })
 }
 
-
-
+//PR NEWSWIRE
+getEventRegistryNewswire(){
+  return this.http.get("http://eventregistry.org/json/article?sourceUri=prnewswire.com&categoryUri=dmoz%2FSociety%2FPolitics&lang=eng&action=getArticles&articlesSortBy=date&resultType=articles&articlesCount=20&articlesIncludeArticleConcepts=true&articlesIncludeArticleCategories=true&articlesIncludeArticleImage=true&articlesIncludeConceptSynonyms=true&articlesIncludeConceptImage=true&articlesIncludeConceptDescription=true&articlesIncludeConceptDetails=true&articlesIncludeSourceDescription=true&articlesIncludeSourceLocation=true&articlesIncludeSourceDetails=true&apiKey=3c5819e5-c21f-4374-8977-d1c9cdcc9048")
+    .map((res) => {
+      this.eventRegistryNewswire = res.json()
+      return res.json().articles.results;
+    })
+}
 
 
 

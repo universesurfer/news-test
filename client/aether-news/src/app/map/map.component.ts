@@ -39,7 +39,7 @@ export class MapComponent implements OnInit {
       theme: "dark",
       projection: "Eckert 5",
       panEventsEnabled: true,
-      backgroundColor: "white",
+      backgroundColor: "#F2F1F1",
       backgroundAlpha: 1,
       zoomControl: {
         zoomControlEnabled: true
@@ -56,7 +56,7 @@ export class MapComponent implements OnInit {
         color: "#6277A7",
         colorSolid: "#84ADE9",
         selectedColor: "#6164ce",
-        outlineColor: "#666666",
+        outlineColor: "#4B4B4B",
         rollOverColor: "#9EC2F7",
         rollOverOutlineColor: "#000000"
       },
