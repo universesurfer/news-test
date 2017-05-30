@@ -23,8 +23,8 @@
 .dropdown-menu {
   height: 180px;
   width: 160px;
-  background-color: black;
-  color: white;
+  /*background-color: black;
+  color: white;*/
   position: absolute;
   margin: auto;
 }

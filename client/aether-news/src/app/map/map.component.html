@@ -1,19 +1,15 @@
 <div class="container-fluid">
   <div class="row">
 
-<!-- MAP -->
-<div class="map-container">
+    <!-- MAP -->
+    <div class="map-container">
 
-        <!-- <div id="map"></div> -->
+      <div id="mapdiv"></div>
+      <div id="info">Selected countries: <span id="selected">-</span></div>
 
-<!-- <div id="regions_div"></div> -->
-<div id="mapdiv"></div>
-<div id="info">Selected countries: <span id="selected">-</span></div>
+      <button type="button" class="btn btn-primary search-button" (click)="fireShareEvent($event)">SEARCH</button>
 
-<!-- <button (click)="fireShareEvent($event)">Hit me</button> -->
-<button type="button" class="btn btn-primary search-button" (click)="fireShareEvent($event)">Search</button>
-
-</div>
+    </div>
 
   </div>
 </div>
